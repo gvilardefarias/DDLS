@@ -1,15 +1,16 @@
 \documentclass[
-	12pt,
-	a4paper,
-	chapter=TITLE,
-	section=TITLE,
-	subsection=TITLE,
-	subsubsection=TITLE,
-	english,
-	french,
-	spanish,
-	brazil,
-	]{abntex2}
+    12pt,
+    a4paper,
+    oneside,
+    chapter=TITLE,
+    section=TITLE,
+    subsection=TITLE,
+    subsubsection=TITLE,
+    english,
+    french,
+    spanish,
+    brazil,
+    ]{abntex2}
 
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
@@ -24,13 +25,13 @@
 \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 \renewcommand{\backref}{}
 \renewcommand*{\backrefalt}[4]{
-	\ifcase #1
-		Nenhuma citação no texto.
-	\or
-		Citado na página #2.
-	\else
-		Citado #1 vezes nas páginas #2.
-	\fi}
+    \ifcase #1
+        Nenhuma citação no texto.
+    \or
+        Citado na página #2.
+    \else
+        Citado #1 vezes nas páginas #2.
+    \fi}
 
 \titulo{NOME DO PROJETO}
 \autor{DDLS}
@@ -47,18 +48,18 @@
 \definecolor{blue}{RGB}{41,5,195}
 \makeatletter
 \hypersetup{
-     	%pagebackref=true,
-		pdftitle={\@title}, 
-		pdfauthor={\@author},
-    	pdfsubject={\imprimirpreambulo},
-	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}, 
-		colorlinks=false,       		
-    	linkcolor=blue,          	
-    	citecolor=blue,        		
-    	filecolor=magenta,      	
-		urlcolor=blue,
-		bookmarksdepth=4
+        %pagebackref=true,
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2},
+        pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}, 
+        colorlinks=false,               
+        linkcolor=blue,             
+        citecolor=blue,             
+        filecolor=magenta,          
+        urlcolor=blue,
+        bookmarksdepth=4
 }
 \makeatother
 

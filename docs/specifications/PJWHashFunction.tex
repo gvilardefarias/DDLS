@@ -1,15 +1,16 @@
 \documentclass[
-	12pt,
-	a4paper,
-	chapter=TITLE,
-	section=TITLE,
-	subsection=TITLE,
-	subsubsection=TITLE,
-	english,
-	french,
-	spanish,
-	brazil,
-	]{abntex2}
+    12pt,
+    a4paper,
+    oneside,
+    chapter=TITLE,
+    section=TITLE,
+    subsection=TITLE,
+    subsubsection=TITLE,
+    english,
+    french,
+    spanish,
+    brazil,
+    ]{abntex2}
 
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
@@ -21,16 +22,18 @@
 \usepackage[brazilian,hyperpageref]{backref}
 \usepackage[alf]{abntex2cite}
 
+\usepackage{listings}
+
 \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 \renewcommand{\backref}{}
 \renewcommand*{\backrefalt}[4]{
-	\ifcase #1
-		Nenhuma citação no texto.
-	\or
-		Citado na página #2.
-	\else
-		Citado #1 vezes nas páginas #2.
-	\fi}
+    \ifcase #1
+        Nenhuma citação no texto.
+    \or
+        Citado na página #2.
+    \else
+        Citado #1 vezes nas páginas #2.
+    \fi}
 
 \titulo{PJW HASH FUNCTION}
 \autor{DDLS}
@@ -47,18 +50,18 @@
 \definecolor{blue}{RGB}{41,5,195}
 \makeatletter
 \hypersetup{
-     	%pagebackref=true,
-		pdftitle={\@title}, 
-		pdfauthor={\@author},
-    	pdfsubject={\imprimirpreambulo},
-	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}, 
-		colorlinks=false,       		
-    	linkcolor=blue,          	
-    	citecolor=blue,        		
-    	filecolor=magenta,      	
-		urlcolor=blue,
-		bookmarksdepth=4
+        %pagebackref=true,
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2},
+        pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}, 
+        colorlinks=false,               
+        linkcolor=blue,             
+        citecolor=blue,             
+        filecolor=magenta,          
+        urlcolor=blue,
+        bookmarksdepth=4
 }
 \makeatother
 
@@ -66,6 +69,23 @@
 \setlength{\parskip}{0.2cm}
 
 \makeindex
+
+\lstset{
+  language=C++,
+  basicstyle=\ttfamily\small, 
+  keywordstyle=\color{blue}, 
+  stringstyle=\color{verde}, 
+  commentstyle=\color{red}, 
+  extendedchars=true, 
+  showspaces=false, 
+  showstringspaces=false, 
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true, 
+  breakautoindent=true, 
+  captionpos=b,
+  xleftmargin=0pt,
+}
 
 \begin{document}
 
@@ -81,13 +101,67 @@
 \textual
 
 \chapter{Problema}
+Os algoritmos de hash foram uma forma que se encontrou para resumir uma certa quantidade de dados em alguns bits, existem várias formas de se desenvolver um desses algoritmos uma das mais simples é o PJW que transforma as palavras de entrada em saídas de 32 bits. Com base nessas duas implementações abaixo desenvolva um IP Core que calcule a palavra hash da mesma maneira.
+
+\par
+Implementação 1:
+\begin{lstlisting}
+unsigned long ElfHash ( const unsigned char *s )
+{
+    unsigned long   h = 0, high;
+    while ( *s )
+    {
+        h = ( h << 4 ) + *s++;
+        if ( high = h & 0xF0000000 )
+            h ^= high >> 24;
+        h &= ~high;
+    }
+    return h;
+}
+\end{lstlisting}
+
+\par
+Implementação 2:
+\begin{lstlisting}
+static unsigned int ELFHash(string str) {
+    unsigned int hash = 0;
+    unsigned int x = 0;
+    unsigned int i = 0;
+    unsigned int len = str.length();
+
+    for (i = 0; i < len; i++)
+    {
+        hash = (hash << 4) + (str[i]);
+        if ((x = hash & 0xF0000000) != 0)
+        {
+            hash ^= (x >> 24);
+        }
+        hash &= ~x;
+    }
+    return hash;
+}
+\end{lstlisting}
 
 \include{Interface}
 
 \chapter{Entrada}
+O primeiro dado que deverá entrar é um número n, após isso haverá a entrada de n palavras k.
+\par
+Onde 0 < n < 8
 
 \chapter{Saída}
+A saída deverá ser mostrada apenas quando o hash houver sido calculado e deve sair junto com a subida do ready após 1+n entradas de dados.
 
 \chapter{Caso Base}
+Na \autoref{fig-caso-PJW} temos um exemplo de como deve seu IP deve responder com os respectivos estímulos.
+
+\begin{figure}[htb]
+    \caption{\label{fig-caso-PJW}Caso Base do PJW Hash}
+    \begin{center}
+        \advance\leftskip-3cm
+        \includegraphics[width=\paperwidth]{imgs/caso-PJW.png}
+    \end{center}
+    \legend{Fonte: Produzido pelos autores.}
+\end{figure}
 
 \end{document}
