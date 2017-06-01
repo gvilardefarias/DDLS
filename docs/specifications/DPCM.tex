@@ -23,6 +23,8 @@
 \usepackage[alf]{abntex2cite}
 
 \usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows}
 
 \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 \renewcommand{\backref}{}
@@ -35,7 +37,7 @@
         Citado #1 vezes nas páginas #2.
     \fi}
 
-\titulo{NOME DO PROJETO}
+\titulo{DPCM}
 \autor{DDLS}
 \local{Campina Grande}
 \data{\today}
@@ -71,7 +73,7 @@
 \makeindex
 
 \lstset{
-  language=,
+  language=python,
   basicstyle=\ttfamily\small,
   keywordstyle=\color{blue},
   stringstyle=\color{verde},
@@ -87,6 +89,12 @@
   xleftmargin=0pt,
 }
 
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
 \begin{document}
 
 \selectlanguage{brazil}
@@ -101,20 +109,43 @@
 \textual
 
 \chapter{Problema}
-
+DPCM é a sigla para Differential pulse-code modulation, basicamente é um circuíto que dá a diferença do valor de entrada n com o valor de n-1. Você deverá desenvolver o sistema se baseando na implementação e no diagrama de blocos abaixo.
 
 \par
 Implementação 1:
 \begin{lstlisting}
+def DPCM(a, x):
+    aux = a-x
 
+    if aux<0:
+        return -aux
+
+    return aux
 \end{lstlisting}
+
+\par
+Diagrama de Blocos:
+
+\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+  \node [input, name=input] {};
+  \node [sum, right of=input, node distance=5cm] (sum) {};
+  \node [block, below of=sum] (n-1) {N-1};
+  \node [output, right of=sum, node distance=3cm] (output) {};
+
+  \draw [->] (sum) -- node[name=OUT] {$out$} (output);
+
+  \draw [draw,->] (input) -- node[name=N] {$N$} (sum);
+  \draw [->] (N) |- (n-1);
+  \draw [->] (n-1) -- node[pos=0.99] {$+$} (sum);
+\end{tikzpicture}
 
 \include{Interface}
 
 \chapter{Estimulos}
 \section{Entrada}
-
+O primeiro dado deverá conter a quantidade de entradas k que seu programa deverá ler, após isso haverá a entrada de k números n. Deve ser considerado o valor de 0 para n-1 na primeira entrada do dado.
 \section{Saída}
+A saída deverá ser mostrada apenas quando o resultado estiver pronto e deve sair junto com a subida do ready após a entrada do número.
 
 \section{Caso Base}
 Na \autoref{fig-caso-PROJETO} temos um exemplo de como deve seu IP deve responder com os respectivos estímulos.
