@@ -35,7 +35,7 @@
         Citado #1 vezes nas páginas #2.
     \fi}
 
-\titulo{NOME DO PROJETO}
+\titulo{BIT COUNTER}
 \autor{DDLS}
 \local{Campina Grande}
 \data{\today}
@@ -71,7 +71,7 @@
 \makeindex
 
 \lstset{
-  language=,
+  language=python,
   basicstyle=\ttfamily\small, 
   keywordstyle=\color{blue}, 
   stringstyle=\color{verde}, 
@@ -101,29 +101,40 @@
 \textual
 
 \chapter{Problema}
-
+Você precisa desenvolver um sistema para contar quantos bits 1 ou quantos bits 0 existe em uma palavra binária, como segue a implementação.
 
 \par
 Implementação 1:
 \begin{lstlisting}
-
+def bitCounter(world):
+    counter = 0
+    if int(world[31]):
+        for i in range(len(world)-1):
+            counter += int(world[i])
+    else:
+        for i in range(len(world)-1):
+            if int(world[i])==0:
+                counter += 1
+    return counter
 \end{lstlisting}
 
 \include{Interface}
 
 \chapter{Estimulos}
 \section{Entrada}
+A entrada será uma palavra de 32 bits, no qual o bit mais significativo deve definir se deverá ser contado bits 1s ou 0s. Se o bit mais significativo for 1 deverá ser contabilizado quantos bits 1s existem nos outros 31 bits se o mais significativo for 0 deverá ser contabilizado os bits 0.
 
 \section{Saída}
+A saída deverá ser mostrada apenas quando o resultado estiver pronto e deve sair junto com a subida do ready após a entrada do dado.
 
 \section{Caso Base}
-Na \autoref{fig-caso-PROJETO} temos um exemplo de como deve seu IP deve responder com os respectivos estímulos.
+Na \autoref{fig-caso-bitC} temos um exemplo de como deve seu IP deve responder com os respectivos estímulos.
 
 \begin{figure}[htb]
-    \caption{\label{fig-caso-PROJETO}Caso Base do PROJETO}
+    \caption{\label{fig-caso-bitC}Caso Base do Bit Counter}
     \begin{center}
         \advance\leftskip-3cm
-        \includegraphics[width=\paperwidth]{imgs/caso-PROJETO.png}
+        \includegraphics[width=\paperwidth]{imgs/caso-bitC.png}
     \end{center}
     \legend{Fonte: Produzido pelos autores.}
 \end{figure}
