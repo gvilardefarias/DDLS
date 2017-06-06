@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/gustavo/Documentos/DDLS/rtl/Bit Counter/simulation/qsim
+vbitCounter
+!s110 1496767730
+!i10b 1
+!s100 ;@L]GU24D^cB4feGNmL6k0
+IBX^j`g5311PcYO<1i?5UJ0
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1496767728
+8bitCounter.vo
+FbitCounter.vo
+L0 32
+Z2 OV;L;10.4d;61
+r1
+!s85 0
+31
+Z3 !s108 1496767730.000000
+!s107 bitCounter.vo|
+!s90 -work|work|bitCounter.vo|
+!i113 1
+Z4 o-work work
+nbit@counter
+vbitCounter_vlg_vec_tst
+!s110 1496767731
+!i10b 1
+!s100 GVA731mkWm_>kKOlYQY:;1
+I9c_[X4iYdD:=bQD[^=JLo0
+R1
+R0
+w1496767727
+8Teste1.vwf.vt
+FTeste1.vwf.vt
+L0 30
+R2
+r1
+!s85 0
+31
+R3
+!s107 Teste1.vwf.vt|
+!s90 -work|work|Teste1.vwf.vt|
+!i113 1
+R4
+nbit@counter_vlg_vec_tst

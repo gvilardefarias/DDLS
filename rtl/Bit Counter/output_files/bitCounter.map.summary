@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Tue Jun  6 13:47:32 2017
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+Revision Name : bitCounter
+Top-level Entity Name : bitCounter
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 45
+Total pins : 68
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

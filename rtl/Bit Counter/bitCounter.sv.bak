@@ -1,0 +1,13 @@
+module bitCounter(input logic clk, input logic rst, input logic Valid, input logic[31:0] DataIn, output logic Ready, output logic[31:0] DataOut);
+	logic [31:0] word:
+
+	always_ff @(posedge clr)
+		if(rst) begin
+			word <= 32'd0;
+			Ready <= 1'b1;
+		end
+		else begin
+			if(Valid==1'b1) 
+		end
+
+endmodule
