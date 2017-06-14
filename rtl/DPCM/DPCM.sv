@@ -9,18 +9,17 @@ module DPCM(input logic clk, input logic rst, input logic Valid, input logic[31:
 			wordBefore <= 32'd0;
 		end
 		else begin
-			if(Valid==1'b1) begin
+			if(Valid && Ready) begin
 				Ready <= 1'b0;
 				wordNow <= DataIn;
 				wordBefore <= wordNow;
 			end
-			else begin
-				if(Ready==1'b0)
-					if(wordNow>wordBefore)
-						DataOut <= wordNow - wordBefore;
-					else
-						DataOut <= wordBefore - wordNow;
-						
+			if(~Ready) begin
+				if(wordNow>wordBefore)
+					DataOut <= wordNow - wordBefore;
+				else
+					DataOut <= wordBefore - wordNow;
+					
 				Ready <= 1'b1;
 			end
 		end
