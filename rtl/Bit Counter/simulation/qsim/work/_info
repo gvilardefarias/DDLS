@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 d/home/gustavo/Documentos/DDLS/rtl/Bit Counter/simulation/qsim
 vbitCounter
-!s110 1496767730
+!s110 1497985137
 !i10b 1
-!s100 ;@L]GU24D^cB4feGNmL6k0
-IBX^j`g5311PcYO<1i?5UJ0
+!s100 W62IjcR[VjT:b5KS@U6a81
+IfhUN?Qk<nb7HeS7M0>O@O0
 Z1 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1496767728
+w1497985134
 8bitCounter.vo
 FbitCounter.vo
 L0 32
@@ -23,20 +23,20 @@ Z2 OV;L;10.4d;61
 r1
 !s85 0
 31
-Z3 !s108 1496767730.000000
+!s108 1497985137.000000
 !s107 bitCounter.vo|
 !s90 -work|work|bitCounter.vo|
 !i113 1
-Z4 o-work work
+Z3 o-work work
 nbit@counter
 vbitCounter_vlg_vec_tst
-!s110 1496767731
+!s110 1497985139
 !i10b 1
-!s100 GVA731mkWm_>kKOlYQY:;1
-I9c_[X4iYdD:=bQD[^=JLo0
+!s100 J7^mC9>ieWj=zU`^Z0>5k1
+I^ld8NADbGdC29NHM3V8gf1
 R1
 R0
-w1496767727
+w1497985133
 8Teste1.vwf.vt
 FTeste1.vwf.vt
 L0 30
@@ -44,9 +44,9 @@ R2
 r1
 !s85 0
 31
-R3
+!s108 1497985138.000000
 !s107 Teste1.vwf.vt|
 !s90 -work|work|Teste1.vwf.vt|
 !i113 1
-R4
+R3
 nbit@counter_vlg_vec_tst
