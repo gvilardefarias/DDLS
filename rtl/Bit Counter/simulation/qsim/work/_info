@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 d/home/gustavo/Documentos/DDLS/rtl/Bit Counter/simulation/qsim
 vbitCounter
-!s110 1497985137
+!s110 1499189084
 !i10b 1
-!s100 W62IjcR[VjT:b5KS@U6a81
-IfhUN?Qk<nb7HeS7M0>O@O0
+!s100 8CX>ecdl1OSoj_3?jW_dW0
+I^j840T?WQEAA6>n<^]MVk1
 Z1 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1497985134
+w1499189081
 8bitCounter.vo
 FbitCounter.vo
 L0 32
@@ -23,7 +23,7 @@ Z2 OV;L;10.4d;61
 r1
 !s85 0
 31
-!s108 1497985137.000000
+!s108 1499189083.000000
 !s107 bitCounter.vo|
 !s90 -work|work|bitCounter.vo|
 !i113 1

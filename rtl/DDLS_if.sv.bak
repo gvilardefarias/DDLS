@@ -1,0 +1,8 @@
+interface DDLS_if();
+	input logic[31:0] DataIn;
+	input logic clk, rst, Valid;
+	
+	output logic Ready;
+	output logic[31:0] DataOut;
+	
+endinterface

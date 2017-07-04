@@ -1,23 +1,23 @@
-module bitCounter(input logic clk, input logic rst, input logic Valid, input logic[31:0] DataIn, output logic Ready, output logic[31:0] DataOut);
+module bitCounter(DDLS_if.Basic iter);
 	logic[31:0] word;
 	logic[5:0] counterBits, posCounter;
 
-	always_ff @(posedge clk)
-		if(rst) begin
+	always_ff @(posedge iter.clk)
+		if(iter.rst) begin
 			word <= 32'd0;
-			Ready <= 1'b1;
-			DataOut <= 32'd0;
+			iter.Ready <= 1'b1;
 			posCounter <= 6'd0;
-			counterBits <= 6'd0;			
+			counterBits <= 6'd0;
+			iter.DataOut <= 32'd0;	
 		end
 		else begin
-			if(Valid && Ready) begin
-				Ready <= 1'b0;
-				word <= DataIn;
+			if(iter.Valid && iter.Ready) begin
 				posCounter <= 6'd0;
+				iter.Ready <= 1'b0;
 				counterBits <= 6'd0;
+				word <= iter.DataIn;
 			end
-			if(~Ready) begin
+			if(~iter.Ready) begin
 				posCounter <= posCounter + 6'd1;
 				
 				if(posCounter<6'd31)
@@ -28,9 +28,9 @@ module bitCounter(input logic clk, input logic rst, input logic Valid, input log
 							counterBits <= counterBits + 6'd1;
 					end
 				else begin
-					Ready <= 1'b1;
+					iter.Ready <= 1'b1;
 					posCounter <= 6'd0;
-					DataOut <= counterBits;
+					iter.DataOut <= counterBits;
 				end
 			end			
 		end

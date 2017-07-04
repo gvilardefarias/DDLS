@@ -1,25 +1,24 @@
 typedef enum logic [2:0] {HashByte1, HashByte2, HashByte3, HashByte4, Finaly} States;
 
-module PJW(input logic clk, input logic rst, input logic Valid, input logic[31:0] DataIn, output logic Ready, output logic[31:0] DataOut);
+module PJW(DDLS_if.Basic iter);
 	States hashState;
 	logic[31:0] word, hash, x;
 
-	always_ff @(posedge clk)
-		if(rst) begin
+	always_ff @(posedge iter.clk)
+		if(iter.rst) begin
 			hash <= 32'd0;
-			Ready <= 1'b1;
-			DataOut <= 32'd0;
+			iter.Ready <= 1'b1;
+			iter.DataOut <= 32'd0;
 			hashState <= HashByte4;
 		end
 		else begin
-			if(Valid && Ready) begin
+			if(iter.Valid && iter.Ready) begin
 				hash = 32'd0;
-				Ready <= 1'b0;
+				iter.Ready <= 1'b0;
+				word <= iter.DataIn;
 				hashState <= HashByte4;
-				
-				word <= DataIn;
 			end
-			if(~Ready)
+			if(~iter.Ready)
 				case(hashState)
 					HashByte4: begin
 						hash = (hash<<4) + (word[31:24]);
@@ -50,8 +49,8 @@ module PJW(input logic clk, input logic rst, input logic Valid, input logic[31:0
 						hashState <= Finaly;
 					end
 					Finaly: begin
-						Ready <= 1'b1;
-						DataOut <= hash;
+						iter.Ready <= 1'b1;
+						iter.DataOut <= hash;
 						
 						hashState <= HashByte4;
 					end
