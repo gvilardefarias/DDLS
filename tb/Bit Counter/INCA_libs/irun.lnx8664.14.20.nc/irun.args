@@ -1,0 +1,9 @@
+//
+// File created by:  irun
+// Do not modify this file
+//
+-uvm
+-access
++r
+top.sv
++UVM_VERBOSITY=LOW

@@ -29,7 +29,7 @@ module top;
   
   logic [1:0] state;
   
-  DDLS_if.Basic iter();
+  DDLS_if iter(.clk(clk), .rst(rst));
   
   bitCounter bC(iter);
 
@@ -45,7 +45,7 @@ module top;
        set_config_int("*", "recording_detail", 1);
     `endif
     
-    uvm_config_db#(input_vif)::set(uvm_root::get(), "*.env_h.mst.*", "vif", iter);
+    uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.mst.*", "vif", iter);
     
     run_test("simple_test");
   end

@@ -1,6 +1,6 @@
-interface DDLS_if();
+interface DDLS_if(logic clk, logic rst);
+	logic Valid, Ready;
 	logic[31:0] DataIn, DataOut;
-	logic clk, rst, Valid, Ready;
 	
 	modport Basic(input clk, rst, Valid, DataIn, output Ready, DataOut);
 	

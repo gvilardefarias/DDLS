@@ -1,19 +1,19 @@
 class monitor extends uvm_monitor;
-    input_vif  vif;
+    Vif  vif;
     event begin_record, end_record;
     packet tr;
 
     uvm_analysis_port #(packet) item_collected_port;
     `uvm_component_utils(monitor)
    
-    function new(string name, uvm_component parent);
+    function new(string name = "monitor", uvm_component parent);
         super.new(name, parent);
         item_collected_port = new ("item_collected_port", this);
     endfunction
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        assert(uvm_config_db#(input_vif)::get(this, "", "vif", vif));
+        assert(uvm_config_db#(Vif)::get(this, "", "vif", vif));
         tr = packet::type_id::create("tr", this);
     endfunction
 

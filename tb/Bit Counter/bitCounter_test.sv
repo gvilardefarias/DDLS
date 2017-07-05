@@ -1,6 +1,6 @@
-class class bitCounter_test extends uvm_test;
+class bitCounter_test extends uvm_test;
   env env_h;
-  sequence seq;
+  sequence_in seq;
 
   `uvm_component_utils(bitCounter_test)
 

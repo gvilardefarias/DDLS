@@ -4,6 +4,7 @@ class refmod extends uvm_component;
     `uvm_component_utils(refmod)
     
     packet tr_in;
+    packet tr_out;
     integer x;
     uvm_get_port #(packet) in;
     uvm_put_port #(packet) out;

@@ -1,0 +1,54 @@
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/uvm_macros.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/uvm_macros.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_version_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_version_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_version.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_version.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_message_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_message_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_phase_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_phase_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_object_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_object_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_printer_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_printer_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_tlm_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_tlm_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/tlm1/uvm_tlm_imps.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/tlm1/uvm_tlm_imps.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_sequence_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_sequence_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_callback_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_callback_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_reg_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_reg_defines.svh
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_deprecated_defines.svh
+/opt/cadence/tools.lnx86/methodology/UVM/CDNS-1.1d/sv/src/macros/uvm_deprecated_defines.svh
+../../rtl/DDLS_if.sv
+/home/gustavo/Documentos/DDLS/rtl/DDLS_if.sv
+../../rtl/Bit Counter/bitCounter.sv
+/home/gustavo/Documentos/DDLS/rtl/Bit Counter/bitCounter.sv
+./packet.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/packet.sv
+./sequence.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/sequence.sv
+./sequencer.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/sequencer.sv
+./driver.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/driver.sv
+./monitor.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/monitor.sv
+./monitor_out.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/monitor_out.sv
+./agent.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/agent.sv
+./agent_out.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/agent_out.sv
+./refmod.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/refmod.sv
+./comparator.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/comparator.sv
+./env.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/env.sv
+./bitCounter_test.sv
+/home/gustavo/Documentos/DDLS/tb/Bit Counter/bitCounter_test.sv
