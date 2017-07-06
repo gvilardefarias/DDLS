@@ -31,7 +31,7 @@ module top;
   
   DDLS_if iter(.clk(clk), .rst(rst));
   
-  bitCounter bC(iter);
+  bitCounter bC(iter.Basic);
 
   initial begin
     `ifdef INCA
@@ -46,8 +46,9 @@ module top;
     `endif
     
     uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.mst.*", "vif", iter);
+    uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.slv.*",  "vif", iter);
     
-    run_test("simple_test");
+    run_test("bitCounter_test");
   end
   
 endmodule

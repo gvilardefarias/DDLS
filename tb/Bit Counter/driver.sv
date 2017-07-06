@@ -30,7 +30,7 @@ class driver extends uvm_driver #(packet);
         forever begin
             vif.Valid <= '0;
             vif.DataIn <= 'x;
-            @(posedge vif.rst);
+            @(negedge vif.rst);
         end
     endtask
 
@@ -48,7 +48,7 @@ class driver extends uvm_driver #(packet);
 
     virtual protected task drive_transfer(packet tr);
         while(!vif.Ready)
-            @(posedge vif.clk);
+            @(negedge vif.clk);
 
         vif.DataIn = tr.Data;
         vif.Valid = 1;

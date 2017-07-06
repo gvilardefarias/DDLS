@@ -2,7 +2,6 @@
 // File created by:  irun
 // Do not modify this file
 //
-+UVM_VERBOSITY=LOW
 -loadpli
 /opt/cadence/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/64bit/libuvmpli.so:uvm_pli_boot
 -ACCESS

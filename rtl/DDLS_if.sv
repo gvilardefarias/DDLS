@@ -1,4 +1,4 @@
-interface DDLS_if(logic clk, logic rst);
+interface DDLS_if(input logic clk, input logic rst);
 	logic Valid, Ready;
 	logic[31:0] DataIn, DataOut;
 	

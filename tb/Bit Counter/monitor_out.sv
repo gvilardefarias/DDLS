@@ -32,7 +32,7 @@ class monitor_out extends uvm_monitor;
         forever begin
             do begin
                 @(posedge vif.clk);
-            end while (vif.ready === 0);
+            end while (vif.Ready === 0);
             -> begin_record;
             
             tr.Data = vif.DataOut;

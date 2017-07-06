@@ -1,0 +1,34 @@
+//
+// File created by:  irun
+// Do not modify this file
+//
+-INPUT
+"@source /opt/cadence/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl"
+-uvmhome
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d
+-sv_lib
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/64bit/libuvmpli.so
+-sv_lib
+external.so
+-MESSAGES
+-RUN
+-SV_LIB
+/opt/cadence/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/64bit/libuvmdpi.so
++EMGRLOG
+irun.log
+-XLSTIME
+1499374979
+-XLKEEP
+-XLMODE
+./INCA_libs/irun.lnx8664.14.20.nc
+-RUNMODE
+-CDSLIB
+./INCA_libs/irun.lnx8664.14.20.nc/cds.lib
+-HDLVAR
+./INCA_libs/irun.lnx8664.14.20.nc/hdl.var
+-XLNAME
+irun
+-XLVERSION
+"TOOL:	irun(64)	14.20-s035"
+-XLNAME
+./INCA_libs/irun.lnx8664.14.20.nc/pc8.pem.local_15319

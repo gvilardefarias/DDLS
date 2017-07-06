@@ -6,4 +6,5 @@
 -access
 +r
 top.sv
-+UVM_VERBOSITY=LOW
+-SV_LIB
+external.so

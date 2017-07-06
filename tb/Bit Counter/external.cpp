@@ -11,6 +11,6 @@ extern "C" int bitCounter(int x){
 		if(str[i]=='1' && str[0]=='1')	cont++;
 		if(str[i]=='0' && str[0]=='0')	cont++;
 	}
-
+	
 	return cont;
 }

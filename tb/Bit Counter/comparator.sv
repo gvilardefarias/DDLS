@@ -57,8 +57,6 @@ class comparator #(type T = packet) extends uvm_scoreboard;
   endfunction
 
   virtual function void write(T rec);
-    if (free)
-      uvm_report_fatal("No expect transaction to compare with", "");
     
     if(!(exp.compare(rec))) begin
       uvm_report_warning("Comparator Mismatch", "");
@@ -69,7 +67,7 @@ class comparator #(type T = packet) extends uvm_scoreboard;
       m_matches++;
     end
     
-    if(m_matches+m_mismatches > 100)
+    if(m_matches+m_mismatches > 1000)
       -> end_of_simulation;
     
     -> compared;

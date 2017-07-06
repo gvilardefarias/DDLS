@@ -1,7 +1,7 @@
 class agent extends uvm_agent;
     sequencer sqr;
-    driver    drv;
-    monitor   mon;
+    driver drv;
+    monitor mon;
 
     uvm_analysis_port #(packet) item_collected_port;
 
