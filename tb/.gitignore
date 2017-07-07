@@ -2,5 +2,6 @@
 */*.trn
 */.nfs*
 */*.log
+*/*.key
 */INCA_libs
 */INCA_libs/*

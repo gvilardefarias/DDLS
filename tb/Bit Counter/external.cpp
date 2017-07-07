@@ -12,7 +12,7 @@ extern "C" int bitCounter(int x){
 		if(str[i]=='0' && str[0]=='0')	cont++;
 	}
 
-	//cout << str << "\n";
+	cout << str << "\n";
 
 	return cont;
 }
