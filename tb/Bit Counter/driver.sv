@@ -54,6 +54,7 @@ class driver extends uvm_driver #(packet);
         vif.Valid = 1;
 
         @(negedge vif.Ready);
+        @(negedge vif.clk);
         vif.Valid = 0;
         
         -> end_record;
