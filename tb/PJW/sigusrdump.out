@@ -1,0 +1,5 @@
+*** Current stack trace:
+--> 0x7f84f7027d33 std::basic_string<char, std::char_traits<char>, std::allocator<char> >::length() const      + 3        /opt/cadence/tools/lib/64bit/libstdc++.so.6.0.13
+--> 0x7f84f7027d33 std::basic_string<char, std::char_traits<char>, std::allocator<char> >::length() const      + 3        /opt/cadence/tools/lib/64bit/libstdc++.so.6.0.13
+--> 0x7f84f58248a3 ELFHash              + 2e       ./external.so
+--> 0x3762955 ELFHash              + ffff807b0df3e0e0 ./external.so
