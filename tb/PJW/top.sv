@@ -31,7 +31,7 @@ module top;
   
   DDLS_if iter(.clk(clk), .rst(rst));
   
-  bitCounter bC(iter.Basic);
+  PJW pjw(iter.Basic);
 
   initial begin
     `ifdef INCA

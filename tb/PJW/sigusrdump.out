@@ -1,5 +1,5 @@
 *** Current stack trace:
---> 0x7f84f7027d33 std::basic_string<char, std::char_traits<char>, std::allocator<char> >::length() const      + 3        /opt/cadence/tools/lib/64bit/libstdc++.so.6.0.13
---> 0x7f84f7027d33 std::basic_string<char, std::char_traits<char>, std::allocator<char> >::length() const      + 3        /opt/cadence/tools/lib/64bit/libstdc++.so.6.0.13
---> 0x7f84f58248a3 ELFHash              + 2e       ./external.so
---> 0x3762955 ELFHash              + ffff807b0df3e0e0 ./external.so
+--> 0x7f42b72316a3 std::basic_ostream<char, std::char_traits<char> >& std::operator<< <char, std::char_traits<char>, std::allocator<char> >(std::basic_ostream<char, std::char_traits<char> >&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 3        /opt/cadence/tools/lib/64bit/libstdc++.so.6.0.13
+--> 0x7f42b72316a3 std::basic_ostream<char, std::char_traits<char> >& std::operator<< <char, std::char_traits<char>, std::allocator<char> >(std::basic_ostream<char, std::char_traits<char> >&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 3        /opt/cadence/tools/lib/64bit/libstdc++.so.6.0.13
+--> 0x7f42b5a399d8 ELFHash              + 23       ./external.so
+--> 0x4bbe856 ELFHash              + ffff80bd4f184ea1 ./external.so

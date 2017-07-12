@@ -67,7 +67,7 @@ class comparator #(type T = packet) extends uvm_scoreboard;
       m_matches++;
     end
     
-    if(m_matches+m_mismatches > 33'd10)
+    if(m_matches+m_mismatches > 33'd4294967295)
       -> end_of_simulation;
     
     -> compared;

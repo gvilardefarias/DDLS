@@ -1,11 +1,11 @@
-import "DPI-C" context function int ELFHash(string x);
+import "DPI-C" context function int ELFHash(logic[31:0] x);
 
 class refmod extends uvm_component;
     `uvm_component_utils(refmod)
     
     packet tr_in;
     packet tr_out;
-    string x;
+    logic[31:0] x;
     uvm_get_port #(packet) in;
     uvm_put_port #(packet) out;
     
@@ -25,7 +25,18 @@ class refmod extends uvm_component;
         
         forever begin
             in.get(tr_in);
-            tr_out.Data = ELFHash(tr_in.Data);
+            
+            if(tr_in.Data[15:8]+tr_in.Data[23:16]+tr_in.Data[31:24]==10'd0)
+                tr_out.Data = ELFHash(tr_in.Data[7:0]);
+            else
+                if(tr_in.Data[23:16]+tr_in.Data[31:24]==10'd0)
+                    tr_out.Data = ELFHash({tr_in.Data[7:0], tr_in.Data[15:8]});
+                else
+                    if(tr_in.Data[31:24]==10'd0)
+                        tr_out.Data = ELFHash({tr_in.Data[7:0], tr_in.Data[15:8], tr_in.Data[23:16]});
+                    else
+                        tr_out.Data = ELFHash({tr_in.Data[7:0], tr_in.Data[15:8], tr_in.Data[23:16], tr_in.Data[31:24]});
+
             out.put(tr_out);
         end
     endtask

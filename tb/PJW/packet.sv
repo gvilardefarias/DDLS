@@ -1,5 +1,5 @@
 class packet extends uvm_sequence_item;
-    rand integer Data;
+    rand logic[31:0] Data;
 
     `uvm_object_utils_begin(packet)
         `uvm_field_int(Data, UVM_ALL_ON|UVM_HEX)
