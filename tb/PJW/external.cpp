@@ -5,7 +5,7 @@ using namespace std;
 extern "C" unsigned long ELFHash ( const unsigned char *s )
 {
     unsigned long   h = 0, high;
-    while ( *s )
+    for ( int i = 0; i < 4 ; i++ )
     {   
         cout << *s;
         h = ( h << 4 ) + *s++;

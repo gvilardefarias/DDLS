@@ -26,16 +26,7 @@ class refmod extends uvm_component;
         forever begin
             in.get(tr_in);
             
-            if(tr_in.Data[15:8]+tr_in.Data[23:16]+tr_in.Data[31:24]==10'd0)
-                tr_out.Data = ELFHash(tr_in.Data[7:0]);
-            else
-                if(tr_in.Data[23:16]+tr_in.Data[31:24]==10'd0)
-                    tr_out.Data = ELFHash({tr_in.Data[7:0], tr_in.Data[15:8]});
-                else
-                    if(tr_in.Data[31:24]==10'd0)
-                        tr_out.Data = ELFHash({tr_in.Data[7:0], tr_in.Data[15:8], tr_in.Data[23:16]});
-                    else
-                        tr_out.Data = ELFHash({tr_in.Data[7:0], tr_in.Data[15:8], tr_in.Data[23:16], tr_in.Data[31:24]});
+            tr_out.Data = ELFHash({tr_in.Data[7:0], tr_in.Data[15:8], tr_in.Data[23:16], tr_in.Data[31:24]});
 
             out.put(tr_out);
         end
