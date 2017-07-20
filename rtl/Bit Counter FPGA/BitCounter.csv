@@ -1,0 +1,42 @@
+# Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus Prime License Agreement,
+# the Altera MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Altera and sold by Altera or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+
+# Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+# File: /home/gustavo/Documentos/DDLS/rtl/Bit Counter FPGA/BitCounter.csv
+# Generated on: Thu Jul 20 15:21:26 2017
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus Prime software.
+
+To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Slew Rate,Differential Pair,Transceiver Analog Settings Protocol,VCCR_GXB/VCCT_GXB Voltage,Transceiver I/O Pin Termination,Transceiver Dedicated Refclk Pin Termination,Transmitter Common Mode Driver Voltage,Transmitter Slew Rate Control,Transmitter Differential Output Voltage,Receiver Buffer Common Mode Voltage,Strict Preservation
+CLOCK_50,Input,PIN_AF14,3B,B3B_N0,PIN_AF14,2.5 V,,,,,,,,,,,,,
+HEX0[6],Output,PIN_AH28,5A,B5A_N0,PIN_AH28,2.5 V,,,,,,,,,,,,,
+HEX0[5],Output,PIN_AG28,5A,B5A_N0,PIN_AG28,2.5 V,,,,,,,,,,,,,
+HEX0[4],Output,PIN_AF28,5A,B5A_N0,PIN_AF28,2.5 V,,,,,,,,,,,,,
+HEX0[3],Output,PIN_AG27,5A,B5A_N0,PIN_AG27,2.5 V,,,,,,,,,,,,,
+HEX0[2],Output,PIN_AE28,5A,B5A_N0,PIN_AE28,2.5 V,,,,,,,,,,,,,
+HEX0[1],Output,PIN_AE27,5A,B5A_N0,PIN_AE27,2.5 V,,,,,,,,,,,,,
+HEX0[0],Output,PIN_AE26,5A,B5A_N0,PIN_AE26,2.5 V,,,,,,,,,,,,,
+HPS_RESET_N,Input,PIN_AA14,3B,B3B_N0,PIN_AA14,2.5 V,,,,,,,,,,,,,
+SW[9],Input,PIN_AE12,3A,B3A_N0,PIN_AE12,2.5 V,,,,,,,,,,,,,
+SW[8],Input,PIN_AD10,3A,B3A_N0,PIN_AD10,2.5 V,,,,,,,,,,,,,
+SW[7],Input,PIN_AC9,3A,B3A_N0,PIN_AC9,2.5 V,,,,,,,,,,,,,
+SW[6],Input,PIN_AE11,3A,B3A_N0,PIN_AE11,2.5 V,,,,,,,,,,,,,
+SW[5],Input,PIN_AD12,3A,B3A_N0,PIN_AD12,2.5 V,,,,,,,,,,,,,
+SW[4],Input,PIN_AD11,3A,B3A_N0,PIN_AD11,2.5 V,,,,,,,,,,,,,
+SW[3],Input,PIN_AF10,3A,B3A_N0,PIN_AF10,2.5 V,,,,,,,,,,,,,
+SW[2],Input,PIN_AF9,3A,B3A_N0,PIN_AF9,2.5 V,,,,,,,,,,,,,
+SW[1],Input,PIN_AC12,3A,B3A_N0,PIN_AC12,2.5 V,,,,,,,,,,,,,
+SW[0],Input,PIN_AB12,3A,B3A_N0,PIN_AB12,2.5 V,,,,,,,,,,,,,
+Valid,Input,PIN_AA15,3B,B3B_N0,PIN_AA15,2.5 V,,,,,,,,,,,,,
