@@ -1,12 +1,12 @@
 module DPCM(DDLS_if.Basic iter);
-	logic[31:0] wordNow, wordBefore;
+	logic[7:0] wordNow, wordBefore;
 
 	always_ff @(posedge iter.clk)
 		if(iter.rst) begin
-			wordNow <= 32'd0;
+			wordNow <= 8'd0;
 			iter.Ready <= 1'b1;
-			wordBefore <= 32'd0;
-			iter.DataOut <= 32'd0;
+			wordBefore <= 8'd0;
+			iter.DataOut <= 8'd0;
 		end
 		else begin
 			if(iter.Valid && iter.Ready) begin
