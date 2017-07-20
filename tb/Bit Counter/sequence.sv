@@ -7,9 +7,9 @@ class sequence_in extends uvm_sequence #(packet);
 
     task body;
         packet tx;
-        logic[32:0] cont = 32'd0;
+        logic[8:0] cont = 9'd0;
 
-        while(cont <= 32'd4294967295) begin
+        while(cont <= 9'd255) begin
             tx = packet::type_id::create("tx");
             start_item(tx);
             tx.Data = cont;
