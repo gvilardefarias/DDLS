@@ -1,7 +1,9 @@
 import uvm_pkg::*;
 `include "uvm_macros.svh"
-`include "../../rtl/DDLS_if.sv"
-`include "../../rtl/DPCM/DPCM.sv"
+`include "../../dut/DDLS_if.sv"
+`include "../../dut/DPCM/Diference.sv"
+`include "../../dut/DPCM/Saturation.sv"
+`include "../../dut/DPCM/DPCM.sv"
 `include "./packet.sv"
 `include "./sequence.sv"
 `include "./sequencer.sv"

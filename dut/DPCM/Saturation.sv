@@ -1,0 +1,8 @@
+module Saturation(input logic[7:0] DataIn, output logic[7:0] DataOut);
+	
+	always_comb
+		if(DataIn>8'd200)
+			DataOut = 8'd200;
+		else
+			DataOut = DataIn;
+endmodule

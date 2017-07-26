@@ -1,0 +1,8 @@
+module Diference(input logic[7:0] Word[1:0], output logic [7:0] DataOut);
+	
+	always_comb
+		if(Word[1]>Word[0])
+			DataOut = Word[1] - Word[0];
+		else
+			DataOut = Word[0] - Word[1];
+endmodule
