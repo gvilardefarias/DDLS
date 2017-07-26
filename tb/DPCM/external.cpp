@@ -11,8 +11,11 @@ extern "C" int DPCM(int now){
 
 	before = now;
 
-	if(aux>0)
-		return aux;
+	if(aux<0)
+		aux = -aux;;
 
-	return -aux;
+	if(aux>200)
+		return 200;
+
+	return aux;
 }
