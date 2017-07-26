@@ -1,5 +1,5 @@
 module DPCM(DDLS_if.Basic iter);
-	logic[7:0] wordNow, wordBefore;
+	logic[7:0] wordNow, wordBefore, preSaturation;
 
 	always_ff @(posedge iter.clk)
 		if(iter.rst) begin
@@ -7,6 +7,7 @@ module DPCM(DDLS_if.Basic iter);
 			iter.Ready <= 1'b1;
 			wordBefore <= 8'd0;
 			iter.DataOut <= 8'd0;
+			preSaturation = 8'd0;
 		end
 		else begin
 			if(iter.Valid && iter.Ready) begin
@@ -16,9 +17,14 @@ module DPCM(DDLS_if.Basic iter);
 			end
 			if(~iter.Ready) begin
 				if(wordNow>wordBefore)
-					iter.DataOut <= wordNow - wordBefore;
+					preSaturation = wordNow - wordBefore;
 				else
-					iter.DataOut <= wordBefore - wordNow;
+					preSaturation = wordBefore - wordNow;
+				
+				if(preSaturation>8'd200)
+					iter.DataOut <= 8'd200;
+				else
+					iter.DataOut <= preSaturation;
 					
 				iter.Ready <= 1'b1;
 			end
