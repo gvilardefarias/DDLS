@@ -15,7 +15,7 @@ module DPCM(DDLS_if.Basic iter);
 				wordBefore <= wordNow;
 				wordNow <= iter.DataIn;
 			end
-			if(~iter.Ready) begin
+			if(~iter.Ready && ~iter.Valid) begin
 				if(wordNow>wordBefore)
 					preSaturation = wordNow - wordBefore;
 				else
