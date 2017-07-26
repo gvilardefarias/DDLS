@@ -6,29 +6,9 @@ module Top(input logic CLOCK_50, input logic HPS_RESET_N, input logic Valid, inp
 	
 	always_comb begin
 		iter.Valid = ~Valid;
-		iter.DataIn[31:22] = SW;
-		iter.DataIn[21] = ~SW[9];
-		iter.DataIn[20] = ~SW[9];
-		iter.DataIn[19] = ~SW[9];
-		iter.DataIn[18] = ~SW[9];
-		iter.DataIn[17] = ~SW[9];
-		iter.DataIn[16] = ~SW[9];
-		iter.DataIn[15] = ~SW[9];
-		iter.DataIn[14] = ~SW[9];
-		iter.DataIn[13] = ~SW[9];
-		iter.DataIn[12] = ~SW[9];
-		iter.DataIn[11] = ~SW[9];
-		iter.DataIn[10] = ~SW[9];
-		iter.DataIn[09] = ~SW[9];
-		iter.DataIn[08] = ~SW[9];
-		iter.DataIn[07] = ~SW[9];
-		iter.DataIn[06] = ~SW[9];
-		iter.DataIn[05] = ~SW[9];
-		iter.DataIn[04] = ~SW[9];
-		iter.DataIn[03] = ~SW[9];
-		iter.DataIn[02] = ~SW[9];
-		iter.DataIn[01] = ~SW[9];
-		iter.DataIn[00] = ~SW[9];
+		
+		for(int i=0;i<8;i++)
+			iter.DataIn[i] = SW[i+2];
 	end
 	
 endmodule
