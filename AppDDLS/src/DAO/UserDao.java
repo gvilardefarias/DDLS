@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import Bean.Aluno;
+import Bean.User;
 
-public class AlunoDao {
+public class UserDao {
 	static Connection conn;
 
 	public void conectar() {
@@ -32,18 +32,18 @@ public class AlunoDao {
 		}
 	}
 	
-	public void salvar(Aluno a) {
+	public void salvar(User a) {
 		String sql = "INSERT INTO aluno_tb (nome, matricula_aluno, senha, email, curso, periodo) VALUES (?,?,?,?,?,?);";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
 			
-			ps.setString(1, a.getNome());
-			ps.setString(2, a.getMatriculaAluno());
-			ps.setString(3, a.getSenha());
-			ps.setString(4, a.getEmail());
-			ps.setString(5, a.getCurso());
-			ps.setInt(6, a.getPeriodo());
+			ps.setString(1, a.getNameUser());
+			ps.setString(2, a.getRegistryUser());
+			ps.setString(3, a.getPassUser());
+			ps.setString(4, a.getEmailUser());
+			ps.setString(5, a.getCourseUser());
+			ps.setInt(6, a.getClassUser());
 
 			ps.execute();
 			System.out.println("- Linha inserida!\n");
@@ -53,8 +53,8 @@ public class AlunoDao {
 		}
 	}
 
-	public void apagar(Aluno a) {
-		String sql = "DELETE FROM aluno_tb WHERE matricula_aluno = " + a.getMatriculaAluno() + ";";
+	public void apagar(User a) {
+		String sql = "DELETE FROM aluno_tb WHERE matricula_aluno = " + a.getRegistryUser() + ";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);

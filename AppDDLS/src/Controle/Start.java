@@ -1,41 +1,41 @@
 package Controle;
 
 import Bean.Admin;
-import Bean.Aluno;
+import Bean.User;
 import DAO.AdminDao;
-import DAO.AlunoDao;
+import DAO.UserDao;
 
-public class Start extends Metodos{
+public class Start extends Metods{
 	public static void main(String[] args) {
-		Aluno a = new Aluno();
+		User a = new User();
 
-		a.setNome("Phulano");
-		a.setMatriculaAluno("201610010012");
-		a.setSenha(encrypt("phulano12345"));
-		a.setEmail("phulano@gmail.com");
-		a.setCurso("Engenharia Da Computação");
-		a.setPeriodo(4);
+		a.setNameUser("Phulano");
+		a.setRegistryUser("201610010012");
+		a.setPassUser(encrypt("phulano12345"));
+		a.setEmailUser("phulano@gmail.com");
+		a.setCourseUser("Engenharia Da Computação");
+		a.setClassUser(4);
 
-		AlunoDao ad = new AlunoDao();
+		UserDao ad = new UserDao();
 		AdminDao admd = new AdminDao();
 		
 		ad.conectar();
 		admd.conectar();
 		
 		ad.salvar(a);
-		ad.buscar(a.getMatriculaAluno());
+		ad.buscar(a.getRegistryUser());
 		//ad.apagar(a);
 		
 		
 		Admin adm = new Admin();
 
-		adm.setNome("Admin");
-		adm.setMatriculaAdmin("201610010022");
-		adm.setSenha(encrypt("admin12345"));
-		adm.setEmail("admin@gmail.com");
+		adm.setNameAdmin("Admin");
+		adm.setRegistryAdmin("201610010022");
+		adm.setPassAdmin(encrypt("admin12345"));
+		adm.setEmailAdmin("admin@gmail.com");
 		
 		admd.salvar(adm);
-		admd.buscar(adm.getMatriculaAdmin());
+		admd.buscar(adm.getRegistryAdmin());
 		//admd.apagar(adm);
 		
 		ad.desconectar();

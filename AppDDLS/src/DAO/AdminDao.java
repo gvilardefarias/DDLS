@@ -17,8 +17,8 @@ public class AdminDao {
 		Conector.close();
 	}
 
-	public void buscar(String matricula_admin) {
-		String sql = "SELECT * FROM admin_tb WHERE matricula_admin=\"" + matricula_admin + "\";";
+	public void buscar(String registryAdmin) {
+		String sql = "SELECT * FROM admin_tb WHERE registryAdmin=\"" + registryAdmin + "\";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
@@ -33,15 +33,15 @@ public class AdminDao {
 	}
 
 	public void salvar(Admin a) {
-		String sql = "INSERT INTO admin_tb (nome, matricula_admin, senha, email) VALUES (?,?,?,?);";
+		String sql = "INSERT INTO admin_tb (name, registryAdmin, passAdmin, email) VALUES (?,?,?,?);";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
 
-			ps.setString(1, a.getNome());
-			ps.setString(2, a.getMatriculaAdmin());
-			ps.setString(3, a.getSenha());
-			ps.setString(4, a.getEmail());
+			ps.setString(1, a.getNameAdmin());
+			ps.setString(2, a.getRegistryAdmin());
+			ps.setString(3, a.getPassAdmin());
+			ps.setString(4, a.getEmailAdmin());
 
 			ps.execute();
 			System.out.println("- Linha inserida!\n");
@@ -52,7 +52,7 @@ public class AdminDao {
 	}
 
 	public void apagar(Admin a) {
-		String sql = "DELETE FROM admin_tb WHERE matricula_admin = " + a.getMatriculaAdmin() + ";";
+		String sql = "DELETE FROM admin_tb WHERE matricula_admin = " + a.getRegistryAdmin() + ";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);

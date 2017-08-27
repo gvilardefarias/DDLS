@@ -1,42 +1,42 @@
 package Bean;
 
-import Controle.Autenticacao;
+import Controle.Autentication;
 
-public class Admin implements Autenticacao{
-	private String nome;
-	private String matricula_admin;
-	private String email;
-	private String senha;
+public class Admin implements Autentication{
+	private String nameAdmin;
+	private String registryAdmin;
+	private String emailAdmin;
+	private String passAdmin;
 
-	public String getNome() {
-		return nome;
+	public String getNameAdmin() {
+		return nameAdmin;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNameAdmin(String nameAdmin) {
+		this.nameAdmin = nameAdmin;
 	}
 
-	public String getMatriculaAdmin() {
-		return matricula_admin;
+	public String getRegistryAdmin() {
+		return registryAdmin;
 	}
 
-	public void setMatriculaAdmin(String matricula_admin) {
-		this.matricula_admin = matricula_admin;
+	public void setRegistryAdmin(String registryAdmin) {
+		this.registryAdmin = registryAdmin;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getEmailAdmin() {
+		return emailAdmin;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmailAdmin(String emailAdmin) {
+		this.emailAdmin = emailAdmin;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassAdmin() {
+		return passAdmin;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassAdmin(String passAdmin) {
+		this.passAdmin = passAdmin;
 	}
 }

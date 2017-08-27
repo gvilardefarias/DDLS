@@ -3,7 +3,7 @@ package Controle;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Metodos {
+public class Metods {
 	protected static int menu(int resp) {
 		switch (resp) {
 		case 1: return 1;

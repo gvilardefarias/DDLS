@@ -1,5 +1,5 @@
 package Controle;
 
-public interface Autenticacao {
+public interface Autentication {
 	//boolean login(String matricula, String senha);
 }
