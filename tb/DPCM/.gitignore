@@ -1,0 +1,8 @@
+*/*.dsn
+*/*.trn
+*/.nfs*
+*/*.log
+*/*.key
+*/*.out
+*/INCA_libs
+*/INCA_libs/*

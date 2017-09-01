@@ -1,26 +1,76 @@
+typedef enum logic [1:0] {Diference, Saturation, Finish} State;
+typedef enum logic [1:0] {Begin, Calcul, End} StateS;
+
 module DPCM(DDLS_if.Basic iter);
-	logic[7:0] wordNow, wordBefore, DataOutD, DataOutS;
+	State state;
+	StateS stateS;
 	
-	Diference d(.Word1(wordNow), .Word2(wordBefore), .DataOut(DataOutD));
-	Saturation s(.DataIn(DataOutD), .DataOut(DataOutS));
+	logic[31:0] Resp;
+
+	DDLS_if diferenceIt(.clk(iter.clk), .rst(iter.rst));
+	DDLS_if saturationIt(.clk(iter.clk), .rst(iter.rst));
+	
+	Diference d(.iter(diferenceIt.Basic));
+	Saturation s(.iter(saturationIt.Basic));
 
 	always_ff @(posedge iter.clk)
 		if(iter.rst) begin
-			wordNow <= 8'd0;
-			iter.Ready <= 1'b1;
-			wordBefore <= 8'd0;
-			iter.DataOut <= 8'd0;
+			Resp <= 32'd0;
+			state <= Finish;
 		end
 		else begin
-			if(iter.Valid && iter.Ready) begin
-				iter.Ready <= 1'b0;
-				wordBefore <= wordNow;
-				wordNow <= iter.DataIn;
-			end
-			if(~iter.Ready && ~iter.Valid) begin
-				iter.DataOut <= DataOutS;
+			case(state)
+				Diference: begin
+					iter.Ready <= 1'b0;
+					diferenceIt.Valid <= iter.Valid;
+					diferenceIt.DataIn <= iter.DataIn;
 					
-				iter.Ready <= 1'b1;
-			end
+					if(diferenceIt.Ready) begin
+						Resp <= diferenceIt.DataOut;
+						state <= Saturation;
+						stateS <= Begin;
+					end
+				end
+				Saturation: begin
+					diferenceIt.Valid <= iter.Valid;
+					diferenceIt.DataIn <= iter.DataIn;
+					
+					case(stateS)
+						Begin: begin
+							if(saturationIt.Ready) begin
+								saturationIt.Valid <= 1'b1;
+								saturationIt.DataIn <= Resp;
+								
+								stateS <= Calcul;
+							end
+						end
+						Calcul: begin
+							if(~saturationIt.Ready) begin
+								saturationIt.Valid <= 1'b0;
+								
+								stateS <= End;
+							end
+						end
+						End: begin
+							if(saturationIt.Ready) begin
+								Resp <= saturationIt.DataOut;
+								
+								state <= Finish;
+							end
+						end
+					endcase;
+				end
+				Finish: begin
+					diferenceIt.Valid <= iter.Valid;
+					diferenceIt.DataIn <= iter.DataIn;
+					iter.Ready <= diferenceIt.Ready;
+					iter.DataOut <= Resp;
+					
+					if(~diferenceIt.Ready)
+						state <= Diference;
+				end
+			endcase
 		end
+
+		
 endmodule
