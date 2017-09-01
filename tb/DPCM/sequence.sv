@@ -7,7 +7,7 @@ class sequence_in extends uvm_sequence #(packet);
 
     task body;
         packet tx;
-
+        
         for(int i=0;i<256;i++)
             for(int j=i;j<256;j++)
                 for(int k=0;k<2;k++) begin

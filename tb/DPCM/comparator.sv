@@ -72,5 +72,4 @@ class comparator #(type T = packet) extends uvm_scoreboard;
     
     -> compared;
   endfunction
-  
 endclass

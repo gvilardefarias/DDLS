@@ -40,6 +40,8 @@ class monitor extends uvm_monitor;
             item_collected_port.write(tr);
 
             @(posedge vif.clk);
+            @(negedge vif.Ready);
+            @(negedge vif.Valid);
             -> end_record;
         end
     endtask
