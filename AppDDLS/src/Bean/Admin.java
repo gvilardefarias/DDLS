@@ -1,12 +1,12 @@
 package Bean;
 
-import Controle.Autentication;
+import Control.Autentication;
 
 public class Admin implements Autentication{
 	private String nameAdmin;
 	private String registryAdmin;
-	private String emailAdmin;
 	private String passAdmin;
+	private String emailAdmin;
 
 	public String getNameAdmin() {
 		return nameAdmin;
@@ -24,19 +24,19 @@ public class Admin implements Autentication{
 		this.registryAdmin = registryAdmin;
 	}
 
-	public String getEmailAdmin() {
-		return emailAdmin;
-	}
-
-	public void setEmailAdmin(String emailAdmin) {
-		this.emailAdmin = emailAdmin;
-	}
-
 	public String getPassAdmin() {
 		return passAdmin;
 	}
 
 	public void setPassAdmin(String passAdmin) {
 		this.passAdmin = passAdmin;
+	}
+
+	public String getEmailAdmin() {
+		return emailAdmin;
+	}
+
+	public void setEmailAdmin(String emailAdmin) {
+		this.emailAdmin = emailAdmin;
 	}
 }

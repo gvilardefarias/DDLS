@@ -7,18 +7,18 @@ import java.sql.SQLException;
 import Bean.Admin;
 
 public class AdminDao {
-	static Connection conn;
+	static Connection con;
 
-	public void conectar() {
+	public void connect() {
 		Conector.getConnection();
 	}
 
-	public void desconectar() {
+	public void disconnect() {
 		Conector.close();
 	}
 
-	public void buscar(String registryAdmin) {
-		String sql = "SELECT * FROM admin_tb WHERE registryAdmin=\"" + registryAdmin + "\";";
+	public void search(String registryAdmin) {
+		String sql = "SELECT * FROM admin_tb WHERE registryAdmin = \"" + registryAdmin + "\";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
@@ -27,13 +27,13 @@ public class AdminDao {
 			System.out.println("- Busca realizada!\n");
 			// return ps.execute();
 		} catch (SQLException e) {
-			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA TB_ADMIN!!\n\n");
+			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA ADMIN_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());
 		}
 	}
 
-	public void salvar(Admin a) {
-		String sql = "INSERT INTO admin_tb (name, registryAdmin, passAdmin, email) VALUES (?,?,?,?);";
+	public void save(Admin a) {
+		String sql = "INSERT INTO admin_tb (nameAdmin, registryAdmin, passAdmin, emailAdmin) VALUES (?,?,?,?);";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
@@ -51,8 +51,8 @@ public class AdminDao {
 		}
 	}
 
-	public void apagar(Admin a) {
-		String sql = "DELETE FROM admin_tb WHERE matricula_admin = " + a.getRegistryAdmin() + ";";
+	public void delete(Admin a) {
+		String sql = "DELETE FROM admin_tb WHERE registryAdmin = \"" + a.getRegistryAdmin() + "\";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);

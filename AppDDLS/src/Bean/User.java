@@ -1,6 +1,6 @@
 package Bean;
 
-import Controle.Autentication;
+import Control.Autentication;
 
 public class User implements Autentication{
 	private String nameUser;
@@ -19,6 +19,10 @@ public class User implements Autentication{
 	public String getNameUser() {
 		return nameUser;
 	}
+	
+	public void setNameUser(String nameUser) {
+		this.nameUser = nameUser;
+	}
 
 	public String getPassUser() {
 		return passUser;
@@ -26,10 +30,6 @@ public class User implements Autentication{
 
 	public void setPassUser(String passUser) {
 		this.passUser = passUser;
-	}
-
-	public void setNameUser(String nameUser) {
-		this.nameUser = nameUser;
 	}
 
 	public String getRegistryUser() {

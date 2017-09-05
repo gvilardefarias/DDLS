@@ -1,4 +1,4 @@
-package Controle;
+package Control;
 
 import Bean.Admin;
 import Bean.User;
@@ -19,12 +19,12 @@ public class Start extends Metods{
 		UserDao ad = new UserDao();
 		AdminDao admd = new AdminDao();
 		
-		ad.conectar();
-		admd.conectar();
+		ad.connect();
+		admd.connect();
 		
-		ad.salvar(a);
-		ad.buscar(a.getRegistryUser());
-		//ad.apagar(a);
+		ad.save(a);
+		ad.search(a.getRegistryUser());
+		ad.delete(a);
 		
 		
 		Admin adm = new Admin();
@@ -34,11 +34,11 @@ public class Start extends Metods{
 		adm.setPassAdmin(encrypt("admin12345"));
 		adm.setEmailAdmin("admin@gmail.com");
 		
-		admd.salvar(adm);
-		admd.buscar(adm.getRegistryAdmin());
-		//admd.apagar(adm);
+		admd.save(adm);
+		admd.search(adm.getRegistryAdmin());
+		admd.delete(adm);
 		
-		ad.desconectar();
-		admd.desconectar();
+		ad.disconnect();
+		admd.disconnect();
 	}
 }

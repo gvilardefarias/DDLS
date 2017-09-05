@@ -7,18 +7,18 @@ import java.sql.SQLException;
 import Bean.User;
 
 public class UserDao {
-	static Connection conn;
+	static Connection con;
 
-	public void conectar() {
+	public void connect() {
 		Conector.getConnection();
 	}
 
-	public void desconectar() {
+	public void disconnect() {
 		Conector.close();
 	}
 	
-	public void buscar(String matricula_aluno){
-		String sql = "SELECT * FROM aluno_tb WHERE matricula_aluno=\"" + matricula_aluno + "\";";
+	public void search(String registryUser){
+		String sql = "SELECT * FROM user_tb WHERE registryUser = \"" + registryUser + "\";";
 		
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
@@ -27,13 +27,13 @@ public class UserDao {
 			System.out.println("- Busca realizada!\n");
 			//return ps.execute();
 		} catch (SQLException e) {
-			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA ALUNO_TB!!\n\n");
+			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA USER_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());
 		}
 	}
 	
-	public void salvar(User a) {
-		String sql = "INSERT INTO aluno_tb (nome, matricula_aluno, senha, email, curso, periodo) VALUES (?,?,?,?,?,?);";
+	public void save(User a) {
+		String sql = "INSERT INTO user_tb (nameUser, registryUser, passUser, emailUser, courseUser, classUser) VALUES (?,?,?,?,?,?);";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
@@ -48,13 +48,13 @@ public class UserDao {
 			ps.execute();
 			System.out.println("- Linha inserida!\n");
 		} catch (SQLException e) {
-			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA ALUNO_TB!!\n\n");
+			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA USER_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());
 		}
 	}
 
-	public void apagar(User a) {
-		String sql = "DELETE FROM aluno_tb WHERE matricula_aluno = " + a.getRegistryUser() + ";";
+	public void delete(User a) {
+		String sql = "DELETE FROM user_tb WHERE registryUser = \"" + a.getRegistryUser() + "\";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);

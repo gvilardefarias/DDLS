@@ -13,7 +13,7 @@ public class Conector {
 			if (con == null) {
 				con = DriverManager.getConnection("jdbc:mysql://localhost/ddls", "root", "123456");
 			}
-			System.out.println("- Conectado à DDLS como root!\n");
+			System.out.println("- Conectado a DDLS como root!\n");
 			return con;
 		} catch (SQLException e) {
 			System.out.println("- ERRO AO CONECTAR AO BD!!\n\n");
