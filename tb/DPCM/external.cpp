@@ -12,20 +12,28 @@ extern "C" int Dife(int now){
 	if(aux<0)
 		aux = -aux;;
 
-	//printf("%d %d\n", aux, now);
+	printf("Dif: %d\n", aux);
 
 	return aux;
 }
 
-extern "C" int Saturation(int now){
+extern "C" int Satu(int now){
+	int aux = -1;
+
 	if(now>200)
-		return 200;
+		aux = 200;
 	else
-		return now;
+		aux = now;
+
+	printf("Sat: %d\n", aux);
+
+	return aux;
 }
 	
 extern "C" int DPCM(int now){
+	printf("DPCM: %d %d\n", before, now);
+	
 	int aux = Dife(now);
 
-	return Saturation(aux);
+	return Satu(aux);
 }

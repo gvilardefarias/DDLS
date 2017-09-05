@@ -1,8 +1,8 @@
-class comparator #(type T = packet) extends uvm_scoreboard;
-  typedef comparator #(T) this_type;
+class Saturation_comparator #(type T = packet) extends uvm_scoreboard;
+  typedef Saturation_comparator #(T) this_type;
   `uvm_component_param_utils(this_type)
 
-  const static string type_name = "comparator #(T)";
+  const static string type_name = "Saturation_comparator #(T)";
 
   uvm_put_imp #(T, this_type) from_refmod;
   uvm_analysis_imp #(T, this_type) from_dut;
@@ -67,7 +67,7 @@ class comparator #(type T = packet) extends uvm_scoreboard;
       m_matches++;
     end
     
-    if(m_matches+m_mismatches > 'd65792)
+    if(m_matches+m_mismatches > 'd256)
       -> end_of_simulation;
     
     -> compared;

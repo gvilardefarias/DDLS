@@ -1,7 +1,7 @@
-import "DPI-C" context function int Dife(int now);
+import "DPI-C" context function int Satu(int now);
 
-class Diference_refmod extends uvm_component;
-    `uvm_component_utils(Diference_refmod)
+class Saturation_refmod extends uvm_component;
+    `uvm_component_utils(Saturation_refmod)
     
     packet tr_in;
     packet tr_out;
@@ -26,7 +26,7 @@ class Diference_refmod extends uvm_component;
         forever begin
             in.get(tr_in);
             
-            tr_out.Data = Dife(tr_in.Data);
+            tr_out.Data = Satu(tr_in.Data);
 
             out.put(tr_out);
         end
