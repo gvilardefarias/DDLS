@@ -11,12 +11,11 @@ CREATE TABLE group_tb(
 numberGp INT(1) PRIMARY KEY,
 nameUser VARCHAR(50),
 registryUser VARCHAR(12),
-CONSTRAINT fk_name_user FOREIGN KEY (nameUser) REFERENCES user_tb (nameUser),
-CONSTRAINT fk_registry_user FOREIGN KEY (registryUser) REFERENCES user_tb (registryUser));
+CONSTRAINT fk_group_user FOREIGN KEY (nameUser, registryUser) REFERENCES user_tb (nameUser, registryUser));
 
 CREATE TABLE project_tb(
 projectId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-title VARCHAR(750) NOT NULL,
+title VARCHAR(600) NOT NULL,
 referenceFiles VARCHAR(255) NOT NULL,
 testbId INT UNSIGNED,
 registryAdmin VARCHAR(12),
