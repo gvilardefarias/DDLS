@@ -38,9 +38,7 @@ class monitor_out extends uvm_monitor;
             tr.Data = vif.DataOut;
             item_collected_port.write(tr);
 
-            @(posedge vif.clk);
             @(negedge vif.Ready);
-            @(negedge vif.Valid);
             -> end_record;
         end
     endtask

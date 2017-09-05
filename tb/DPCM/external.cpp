@@ -4,9 +4,7 @@ using namespace std;
 
 int before = 0;
 
-extern "C" int DPCM(int now){
-	cout << now << " " << before << "\n";
-
+extern "C" int Dife(int now){
 	int aux = before-now;
 
 	before = now;
@@ -14,8 +12,20 @@ extern "C" int DPCM(int now){
 	if(aux<0)
 		aux = -aux;;
 
-	if(aux>200)
-		return 200;
+	//printf("%d %d\n", aux, now);
 
 	return aux;
+}
+
+extern "C" int Saturation(int now){
+	if(now>200)
+		return 200;
+	else
+		return now;
+}
+	
+extern "C" int DPCM(int now){
+	int aux = Dife(now);
+
+	return Saturation(aux);
 }

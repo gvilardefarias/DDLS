@@ -12,9 +12,12 @@ import uvm_pkg::*;
 `include "./monitor_out.sv"
 `include "./agent.sv"
 `include "./agent_out.sv"
+`include "./Diference_refmod.sv"
 `include "./refmod.sv"
 `include "./comparator.sv"
+`include "./Diference_env.sv"
 `include "./env.sv"
+`include "./Diference_test.sv"
 `include "./DPCM_test.sv"
 
 module top;
@@ -31,9 +34,11 @@ module top;
   
   logic [1:0] state;
   
-  DDLS_if iter(.clk(clk), .rst(rst));
+  DDLS_if DPCM_iter(.clk(clk), .rst(rst));
+  DDLS_if Diference_iter(.clk(clk), .rst(rst));
   
-  DPCM DPCM(iter.Basic);
+  DPCM DPCM(DPCM_iter.Basic);
+  Diference Diference(Diference_iter.Basic);
 
   initial begin
     `ifdef INCA
@@ -47,9 +52,15 @@ module top;
        set_config_int("*", "recording_detail", 1);
     `endif
     
-    uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.mst.*", "vif", iter);
-    uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.slv.*",  "vif", iter);
+    uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.mst.*", "vif", Diference_iter);
+    uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.slv.*",  "vif", Diference_iter);
     
+    run_test("Diference_test");
+    //run_test("Saturation_test");
+
+    uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.mst.*", "vif", DPCM_iter);
+    uvm_config_db#(Vif)::set(uvm_root::get(), "*.env_h.slv.*",  "vif", DPCM_iter);
+
     run_test("DPCM_test");
   end
   

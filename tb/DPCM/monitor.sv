@@ -33,14 +33,12 @@ class monitor extends uvm_monitor;
         forever begin
             do begin
                 @(posedge vif.clk);
-            end while (vif.Valid === 0 || vif.Ready === 0);
+            end while (vif.Valid === 0);
             -> begin_record;
             
             tr.Data = vif.DataIn;
             item_collected_port.write(tr);
 
-            @(posedge vif.clk);
-            @(negedge vif.Ready);
             @(negedge vif.Valid);
             -> end_record;
         end
