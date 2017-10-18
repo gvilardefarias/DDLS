@@ -1,0 +1,126 @@
+\documentclass[
+    12pt,
+    a4paper,
+    oneside,
+    chapter=TITLE,
+    section=TITLE,
+    subsection=TITLE,
+    subsubsection=TITLE,
+    english,
+    french,
+    spanish,
+    brazil,
+    ]{abntex2}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage[brazilian,hyperpageref]{backref}
+\usepackage[alf]{abntex2cite}
+
+\usepackage{listings}
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1
+        Nenhuma citação no texto.
+    \or
+        Citado na página #2.
+    \else
+        Citado #1 vezes nas páginas #2.
+    \fi}
+
+\titulo{Chroma Key}
+\autor{DDLS}
+\local{Campina Grande}
+\data{\today}
+\instituicao{
+  \textbf{Statement of Work}
+  \par
+  Instituto Federal de Educação, Ciência e Tecnologia da Paraíba
+  }
+\tipotrabalho{Projeto de Pesquisa}
+\preambulo{Especificação de projeto feito com objetivo de apresentar e auxiliar o desenvolvimento do mesmo, apresentado à comunidade do IFPB}
+
+\definecolor{blue}{RGB}{41,5,195}
+\makeatletter
+\hypersetup{
+        %pagebackref=true,
+        pdftitle={\@title},
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2},
+        pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa},
+        colorlinks=false,
+        linkcolor=blue,
+        citecolor=blue,
+        filecolor=magenta,
+        urlcolor=blue,
+        bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}
+
+\makeindex
+
+\lstset{
+  language=,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  stringstyle=\color{verde},
+  commentstyle=\color{red},
+  extendedchars=true,
+  showspaces=false,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true,
+  breakautoindent=true,
+  captionpos=b,
+  xleftmargin=0pt,
+}
+
+\begin{document}
+
+\selectlanguage{brazil}
+\frenchspacing 
+\imprimircapa
+\imprimirfolhaderosto
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+\textual
+
+\chapter{Problema}
+Chroma Key é um tecnica de efeito visual que permite colocar uma imagem ou video sobre outro utilizando o anulamento de uma cor em umas das imagens, que no nosso caso será o verde.
+
+\par
+Implementação 1:
+\begin{lstlisting}
+
+\end{lstlisting}
+
+\chapter{Interface}
+A interface deverá seguir o padrão VGA e será uma comunicação assíncrona
+
+\chapter{Estimulos}
+\section{Entrada}
+A entrada consistirá em 2 canais VGAs
+
+\section{Saída}
+A saida será um canal VGA com a imagem ou video já processado em tempo real
+
+\section{Caso Base}
+Na \autoref{fig-caso-PROJETO} temos um exemplo de como deve seu IP deve responder com os respectivos estímulos.
+
+
+\end{document}

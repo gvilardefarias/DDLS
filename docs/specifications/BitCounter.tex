@@ -12,6 +12,25 @@
     brazil,
     ]{abntex2}
 
+\usepackage{xparse} % NewDocumentCommand, IfValueTF, IFBooleanTF
+
+\usepackage{tikz-timing}[2014/10/29]
+\usetikztiminglibrary[rising arrows]{clockarrows}
+
+% Reference a bus.
+%
+% Usage:
+%
+%     \busref[3::0]{C/BE}    ->   C/BE[3::0]
+%     \busref*{AD}           ->   AD#
+%     \busref*[3::0]{C/BE}   ->   C/BE[3::0]#
+%
+\NewDocumentCommand{\busref}{som}{\texttt{%
+#3%
+\IfValueTF{#2}{[#2]}{}%
+\IfBooleanTF{#1}{\#}{}%
+}}
+
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -138,5 +157,6 @@ Na \autoref{fig-caso-bitC} temos um exemplo de como deve seu IP deve responder c
     \end{center}
     \legend{Fonte: Produzido pelos autores.}
 \end{figure}
+
 
 \end{document}

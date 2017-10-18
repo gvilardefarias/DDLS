@@ -1,0 +1,105 @@
+\documentclass[
+    12pt,
+    a4paper,
+    oneside,
+    chapter=TITLE,
+    section=TITLE,
+    subsection=TITLE,
+    subsubsection=TITLE,
+    english,
+    french,
+    spanish,
+    brazil,
+    ]{abntex2}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage[brazilian,hyperpageref]{backref}
+\usepackage[alf]{abntex2cite}
+
+\usepackage{hyperref}
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1
+        Nenhuma citação no texto.
+    \or
+        Citado na página #2.
+    \else
+        Citado #1 vezes nas páginas #2.
+    \fi}
+
+\titulo{BIT COUNTER}
+\autor{DDLS}
+\local{Campina Grande}
+\data{\today}
+\instituicao{
+  \textbf{Statement of Work}
+  \par
+  Instituto Federal de Educação, Ciência e Tecnologia da Paraíba
+  }
+\tipotrabalho{Projeto de Pesquisa}
+\preambulo{Plano de verificação feito com objetivo de auxiliar o desenvolvimento do testbench, apresentado à comunidade do IFPB}
+
+\definecolor{blue}{RGB}{41,5,195}
+\makeatletter
+\hypersetup{
+        %pagebackref=true,
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2},
+        pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}, 
+        colorlinks=false,               
+        linkcolor=blue,             
+        citecolor=blue,             
+        filecolor=magenta,          
+        urlcolor=blue,
+        bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}
+
+\makeindex
+
+\begin{document}
+
+\selectlanguage{brazil}
+\frenchspacing 
+\imprimircapa
+\imprimirfolhaderosto
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+\textual
+
+\chapter{Resumo do Sistema}
+\href{run:../specifications/BitCounter.pdf}{Link para especificação do sistema}
+
+\chapter{Modelo de Referência}
+O modelo de referência por ser extrememente simples foi desenvolvido pela equipe e não se baseia em nenhum padrão, fazendo exatamente o que se necessita.
+
+\chapter{Definição da Transação}
+A transação será sequencias de 32 bits quaisquer, já que não se tem nenhum padrão, apenas deve ser tentado o equilibrio entre o valor do primeiro bit.
+
+\chapter{Definição da Cobertura Funcional e dos Estímulos}
+\section{Direcionados:}
+Os casos direcionados testarão o básico do DUT\footnote{Device Under Test}, será testado a contagem de bits 1s e a de 0s com as seguintes palavras binarias: "10000000000000000000000000000001" e "01111111111111111111111111111110".
+
+\section{Casos limite:}
+Casos limite são a parte crucial dos testes, pois eles que são responsáveis por levar o DUT a situações extremas. Com isso podemos testar o máximo e o mínimo de cada contagem, utilizando as seguintes palavras: "10000000000000000000000000000000", "11111111111111111111111111111111", "01111111111111111111111111111111" e "00000000000000000000000000000000".
+
+\section{Pseudo-Aleatórios: direcionado}
+Para garantir a consistência do sistema será mandada 500 palavras aleatórios, sendo 250 começando com o bit 1 e os outros 250 começando com o bit 0.
+
+\end{document}
