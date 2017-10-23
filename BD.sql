@@ -22,7 +22,7 @@ CONSTRAINT fk_group_user FOREIGN KEY (nameUser, registryUser) REFERENCES user_tb
 CREATE TABLE testbench_tb(
 testbId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 testbPath VARCHAR(255) NOT NULL,
-testbDateServiceUp TIMESTAMP,
+testbDateUp TIMESTAMP,
 registryAdmin VARCHAR(12),
 CONSTRAINT fk_testb_admin FOREIGN KEY (registryAdmin) REFERENCES admin_tb (registryAdmin));
 
@@ -39,7 +39,7 @@ CREATE TABLE dut_tb(
 dutId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 dutPath VARCHAR(255) NOT NULL,
 dutDateUp TIMESTAMP,
-dutCeckTest BOOLEAN NOT NULL,
+dutCheckTest BOOLEAN NOT NULL,
 dutResultPath VARCHAR(255),
 registryUser VARCHAR(12),
 testbId INT UNSIGNED,

@@ -3,12 +3,11 @@ package Bean;
 public class TestBench {
 	private int testbId;
 	private String referenceFiles;
-	private String testbDateServiceUp;
-	//Configurar timestamp pelo bd com o now()
+	private String testbDateUp;
 	private String registryAdmin;
 
-	public String getTestbDateServiceUp() {
-		return testbDateServiceUp;
+	public String getTestbDateUp() {
+		return testbDateUp;
 	}
 
 	public String getReferenceFiles() {
