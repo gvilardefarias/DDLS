@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-/DAO/
-/Controle/
-=======
 /Control/
-/DAO/
 /Bean/
-/TestBench.class
->>>>>>> 2e1f09bf7c48c0600a5943bd070740e69dccebc7
+/DAO/

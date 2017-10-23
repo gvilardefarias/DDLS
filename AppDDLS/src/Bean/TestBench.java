@@ -1,19 +1,26 @@
 package Bean;
 
-import java.security.Timestamp;
-
 public class TestBench {
 	private int testbId;
-	// private arquivo testbFile;
-	// configurar timestamp pelo bd com o now()
+	private String referenceFiles;
+	private String testbDateServiceUp;
+	//Configurar timestamp pelo bd com o now()
 	private String registryAdmin;
+
+	public String getTestbDateServiceUp() {
+		return testbDateServiceUp;
+	}
+
+	public String getReferenceFiles() {
+		return referenceFiles;
+	}
+
+	public void setReferenceFiles(String referenceFiles) {
+		this.referenceFiles = referenceFiles;
+	}
 
 	public int getTestbId() {
 		return testbId;
-	}
-
-	public void setTestbId(int testbId) {
-		this.testbId = testbId;
 	}
 
 	public String getRegistryAdmin() {
