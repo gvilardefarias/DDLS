@@ -4,15 +4,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Metods {
-	protected static int menu(int resp) {
-		switch (resp) {
-		case 1: return 1;
-		case 2: return 1;
-		default: System.out.println("Nenhuma opção escolhida!");
-				 return 0;
-		}
-	}
-	
 	protected static String encrypt(String input) {
 		final StringBuffer sb = new StringBuffer();
 		
