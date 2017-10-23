@@ -3,9 +3,9 @@ package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import Bean.Admin;
+import Bean.Project;
 
-public class AdminDao {
+public class ProjectDAO {
 	static Connection con;
 
 	public void connect() {
@@ -16,7 +16,7 @@ public class AdminDao {
 		Conector.close();
 	}
 
-	public void search(String registryAdmin) {
+	/*public void search(String registryAdmin) {
 		String sql = "SELECT * FROM admin_tb WHERE registryAdmin = \"" + registryAdmin + "\";";
 
 		try {
@@ -29,37 +29,37 @@ public class AdminDao {
 			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA ADMIN_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());
 		}
-	}
+	}*/
 
-	public void save(Admin a) {
-		String sql = "INSERT INTO admin_tb (nameAdmin, registryAdmin, passAdmin, emailAdmin) VALUES (?,?,?,?);";
+	public void save(Project p) {
+		String sql = "INSERT INTO project_tb (projectId, title, referenceFiles, testbId, registryAdmin) VALUES (?,?,?,?,?);";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
 
-			ps.setString(1, a.getNameAdmin());
-			ps.setString(2, a.getRegistryAdmin());
-			ps.setString(3, a.getPassAdmin());
-			ps.setString(4, a.getEmailAdmin());
+			ps.setString(2, p.getTitle());
+			ps.setString(3, p.getReferenceFiles());
+			ps.setInt(4, p.getTestbId());
+			ps.setString(5, p.getRegistryAdmin());
 
 			ps.execute();
 			System.out.println("- Linha inserida!\n");
 		} catch (SQLException e) {
-			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA ADMIN_TB!!\n\n");
+			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA PROJECT_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());
 		}
 	}
 
-	public void delete(Admin a) {
-		String sql = "DELETE FROM admin_tb WHERE registryAdmin = \"" + a.getRegistryAdmin() + "\";";
+	public void delete(Project p) {
+		String sql = "DELETE FROM project_tb WHERE projectId = \"" + p.getProjectId() + "\";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
 			ps.execute();
-			
+
 			System.out.println("- Linha apagada!\n");
 		} catch (SQLException e) {
-			System.out.println("- ERRO AO DELETAR LINHAS DA TABELA ADMIN_TB!!\n\n");
+			System.out.println("- ERRO AO DELETAR LINHAS DA TABELA PROJECT_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());
 		}
 	}

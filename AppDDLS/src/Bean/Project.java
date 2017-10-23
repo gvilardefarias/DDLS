@@ -1,14 +1,22 @@
 package Bean;
 
-public class TestBench {
-	private int testbId;
+public class Project {
+	private int projectId;
+	private String title;
 	private String referenceFiles;
-	private String testbDateServiceUp;
-	//Configurar timestamp pelo bd com o now()
+	private int testbId;
 	private String registryAdmin;
 
-	public String getTestbDateServiceUp() {
-		return testbDateServiceUp;
+	public int getProjectId() {
+		return projectId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getReferenceFiles() {
@@ -21,6 +29,10 @@ public class TestBench {
 
 	public int getTestbId() {
 		return testbId;
+	}
+
+	public void setTestbId(int testbId) {
+		this.testbId = testbId;
 	}
 
 	public String getRegistryAdmin() {

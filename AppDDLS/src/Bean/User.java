@@ -9,12 +9,6 @@ public class User implements Autentication{
 	private String emailUser;
 	private String courseUser;
 	private int classUser;
-
-	//@Override
-	//public boolean login(String matricula, String senha) {
-		
-	//	return false;
-	//}
 	
 	public String getNameUser() {
 		return nameUser;
