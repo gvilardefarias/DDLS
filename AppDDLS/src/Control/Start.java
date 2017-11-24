@@ -9,32 +9,46 @@ import DAO.UserDao;
 
 public class Start extends Metods{
 	public static void main(String[] args) {
-		switch (args[1].toUpperCase()) {
+		/*switch (args[1].toUpperCase()) {
+		
+		//Modelo da entrada: command -parameter registryUser
+		//                   Password: ********
+		
 		case "LOGIN":
 			Scanner scan = new Scanner(System.in);
+			String scn = new String();	
 			UserDao ad = new UserDao();
-			
+					
 			//lembrar do parametro args[2]
 			
 			if (args[3].length() > 12 || args[3].length() < 11) {
-					System.out.println("Matrícula inválida!");
+					System.out.println("Erro: Matrícula inválida!");
 			} else {
-				/*String retsrch = ad.search(args[3];
-				if (retsrch == null) {
-					System.out.println("Matrícula inválida!");
-				} else {
-					if (args[4] != ad.search(buscaSenhaReferente)) {
-						
+				ad.connect();
+				String retsrch = ad.search(args[3]);
+				if (retsrch == /*RESPOSTAPOSITIVADAFUNCAO/ null) {
+					System.out.print("Password: ");
+					//Esconder senha
+					scn = scan.nextLine();
+					if (scn != ad.search(bummand -pascaSenhaReferente)) {
+						//Autentica usuario e senha atraves da inteface Autentication
+						//Entra no ambiente do programa
 					} else {
-						//Executa comando de login
+						System.out.println("Erro: Senha inválida!");
 					}
-				}*/
+				} else {
+					System.out.println("Erro: Matrícula inválida!");
+				}
 			}
+			ad.disconnect();
+			break;
+			
+		case "LOGGOUT":
 			break;
 
 		default:
 			break;
-		}
+		}*/
 			
 			
 		UserDao ad = new UserDao();
@@ -49,11 +63,11 @@ public class Start extends Metods{
 		a.setCourseUser("Engenharia Da Computação");
 		a.setClassUser(4);
 		
-		ad.save(a);
-		ad.search(a.getRegistryUser());
-		ad.delete(a);
+		//ad.save(a); //Fazer verificação antes de inserir no BD
+		ad.verify(a.getRegistryUser());
+		//ad.delete(a);
 		
-		AdminDao admd = new AdminDao();
+		/*AdminDao admd = new AdminDao();
 		admd.connect();
 		
 		Admin adm = new Admin();
@@ -64,10 +78,10 @@ public class Start extends Metods{
 		adm.setEmailAdmin("admin@gmail.com");
 		
 		admd.save(adm);
-		admd.search(adm.getRegistryAdmin());
-		admd.delete(adm);
+		admd.verify(adm.getRegistryAdmin());
+		admd.delete(adm);*/
 		
 		ad.disconnect();
-		admd.disconnect();
+		//admd.disconnect();
 	}
 }

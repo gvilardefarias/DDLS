@@ -1,11 +1,10 @@
 CREATE TABLE user_tb(
-nameUser VARCHAR(50),
-registryUser VARCHAR(12),
+nameUser VARCHAR(50) PRIMARY KEY,
+registryUser VARCHAR(12) PRIMARY KEY,
 passUser VARCHAR(40) NOT NULL,
 emailUser VARCHAR(50) NOT NULL,
 courseUser VARCHAR(50) NOT NULL,
-classUser VARCHAR(6) NOT NULL,
-CONSTRAINT pk_user PRIMARY KEY(nameUser, registryUser));
+classUser VARCHAR(6) NOT NULL);
 
 CREATE TABLE admin_tb(
 nameAdmin VARCHAR(50) NOT NULL,
@@ -47,15 +46,13 @@ CONSTRAINT fk_dut_testb FOREIGN KEY (testbId) REFERENCES testbench_tb (testbId),
 CONSTRAINT fk_dut_user FOREIGN KEY (registryUser) REFERENCES user_tb (registryUser));
 
 CREATE TABLE user_project_tb(
-registryUser VARCHAR(12),
-projectId INT UNSIGNED,
-CONSTRAINT pk_user_project PRIMARY KEY(registryUser, projectId),
+registryUser VARCHAR(12) PRIMARY KEY,
+projectId INT UNSIGNED PRIMARY KEY,
 CONSTRAINT fk_project_user FOREIGN KEY (registryUser) REFERENCES user_tb (registryUser),
 CONSTRAINT fk_user_project FOREIGN KEY (projectId) REFERENCES project_tb (projectId)); 
 
 CREATE TABLE admin_user_tb(
-registryAdmin VARCHAR(12),
-registryUser VARCHAR(12),
-CONSTRAINT pk_user PRIMARY KEY(registryAdmin, registryUser),
+registryAdmin VARCHAR(12) PRIMARY KEY,
+registryUser VARCHAR(12) PRIMARY KEY,
 CONSTRAINT fk_admin_user FOREIGN KEY (registryUser) REFERENCES user_tb (registryUser),
 CONSTRAINT fk_user_admin FOREIGN KEY (registryAdmin) REFERENCES admin_tb (registryAdmin));

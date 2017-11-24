@@ -16,7 +16,7 @@ public class DutDAO {
 		Conector.close();
 	}
 
-	/*public void search(String registryAdmin) {
+	/*public boolean verify(String registryAdmin) {
 		String sql = "SELECT * FROM admin_tb WHERE registryAdmin = \"" + registryAdmin + "\";";
 
 		try {
@@ -26,7 +26,7 @@ public class DutDAO {
 			System.out.println("- Busca realizada!\n");
 			// return ps.execute();
 		} catch (SQLException e) {
-			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA ADMIN_TB!!\n\n");
+			System.out.println("- ERRO AO BUSCAR NA TABELA DUT_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());
 		}
 	}*/

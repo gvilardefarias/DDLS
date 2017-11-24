@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import Bean.User;
 
@@ -16,17 +17,32 @@ public class UserDao {
 		Conector.close();
 	}
 	
-	public void search(String registryUser){
+	public boolean verify(String registryUser){
 		String sql = "SELECT * FROM user_tb WHERE registryUser = \"" + registryUser + "\";";
 		
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
-
-			ps.execute();
-			System.out.println("- Busca realizada!\n");
-			//return ps.execute();
+			ResultSet rs = ps.executeQuery();
+            String[] arr = null;
+            
+            while (rs.next()) {
+            	String aux = rs.getString("registryUser");
+            	arr = aux.split("\n");
+            	for (int i = 0; i < arr.length; i++){
+            		System.out.println(arr[i]);
+                }
+            }
+            
+			if (arr[0] != null) {
+				System.out.println("- Busca realizada! --> True\n");
+				return true;
+			} else {
+				System.out.println("teste4");
+				System.out.println("- Busca realizada! --> False\n");
+				return false;
+			}
 		} catch (SQLException e) {
-			System.out.println("- ERRO AO INSERIR LINHAS NA TABELA USER_TB!!\n\n");
+			System.out.println("- ERRO AO BUSCAR NA TABELA USER_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());
 		}
 	}
