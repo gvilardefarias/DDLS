@@ -50,8 +50,8 @@ public class AdminDao {
 		}
 	}
 
-	public void delete(Admin a) {
-		String sql = "DELETE FROM admin_tb WHERE registryAdmin = \"" + a.getRegistryAdmin() + "\";";
+	public void delete(String registryAdmin) {
+		String sql = "DELETE FROM admin_tb WHERE registryAdmin = \"" + registryAdmin + "\";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);

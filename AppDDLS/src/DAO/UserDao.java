@@ -48,7 +48,7 @@ public class UserDao {
 	}
 	
 	public void save(User a) {
-		String sql = "INSERT INTO user_tb (nameUser, registryUser, passUser, emailUser, courseUser, classUser) VALUES (?,?,?,?,?,?);";
+		String sql = "INSERT INTO user_tb (nameUser, registryUser, passUser, emailUser, courseUser, classUser, numberGp) VALUES (?,?,?,?,?,?,?);";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
@@ -58,7 +58,8 @@ public class UserDao {
 			ps.setString(3, a.getPassUser());
 			ps.setString(4, a.getEmailUser());
 			ps.setString(5, a.getCourseUser());
-			ps.setInt(6, a.getClassUser());
+			ps.setString(6, a.getClassUser());
+			ps.setInt(7, a.getNumberGp());
 
 			ps.execute();
 			System.out.println("- Linha inserida!\n");
@@ -68,8 +69,8 @@ public class UserDao {
 		}
 	}
 
-	public void delete(User a) {
-		String sql = "DELETE FROM user_tb WHERE registryUser = \"" + a.getRegistryUser() + "\";";
+	public void delete(String registryUser) {
+		String sql = "DELETE FROM user_tb WHERE registryUser = \"" + registryUser + "\";";
 
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);

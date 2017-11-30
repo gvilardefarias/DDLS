@@ -2,11 +2,6 @@ package Control;
 
 import java.util.Scanner;
 
-import Bean.Admin;
-import Bean.User;
-import DAO.AdminDao;
-import DAO.UserDao;
-
 public class Start extends Metods{
 	public static void main(String[] args) {
 		/*switch (args[1].toUpperCase()) {
@@ -21,7 +16,7 @@ public class Start extends Metods{
 					
 			//lembrar do parametro args[2]
 			
-			if (args[3].length() > 12 || args[3].length() < 11) {
+			if (args[3].length() > 12 || args[3].length() < 7) {
 					System.out.println("Erro: Matrícula inválida!");
 			} else {
 				ad.connect();
@@ -49,39 +44,30 @@ public class Start extends Metods{
 		default:
 			break;
 		}*/
+		
+		//----------------------------------------------------------------------------------------------
+		
+		// SE O USUARIO LOGGAR COMO ADMIN
 			
+			Scanner scan = new Scanner(System.in);
+			String scn = scan.nextLine().toUpperCase();
 			
-		UserDao ad = new UserDao();
-		ad.connect();
+			switch (scn) {
+				case "ADDUSER":
+					addUser();
+					break;
+				case "ADDADMIN":
+					addAdmin();
+					break;
+				case "DELUSER":
+					delUser();
+					break;
+				default:
+					break;
+			}
 		
-		User a = new User();
-
-		a.setNameUser("Phulano");
-		a.setRegistryUser("201610010012");
-		a.setPassUser(encrypt("phulano12345"));
-		a.setEmailUser("phulano@gmail.com");
-		a.setCourseUser("Engenharia Da Computação");
-		a.setClassUser(4);
+		//----------------------------------------------------------------------------------------------
 		
-		//ad.save(a); //Fazer verificação antes de inserir no BD
-		ad.verify(a.getRegistryUser());
-		//ad.delete(a);
-		
-		/*AdminDao admd = new AdminDao();
-		admd.connect();
-		
-		Admin adm = new Admin();
-
-		adm.setNameAdmin("Admin");
-		adm.setRegistryAdmin("201610010022");
-		adm.setPassAdmin(encrypt("admin12345"));
-		adm.setEmailAdmin("admin@gmail.com");
-		
-		admd.save(adm);
-		admd.verify(adm.getRegistryAdmin());
-		admd.delete(adm);*/
-		
-		ad.disconnect();
-		//admd.disconnect();
+		scan.close();
 	}
 }

@@ -8,8 +8,9 @@ public class User implements Autentication{
 	private String passUser;
 	private String emailUser;
 	private String courseUser;
-	private int classUser;
-	
+	private String classUser;
+	private int numberGp;
+
 	public String getNameUser() {
 		return nameUser;
 	}
@@ -49,12 +50,20 @@ public class User implements Autentication{
 	public void setCourseUser(String courseUser) {
 		this.courseUser = courseUser;
 	}
-
-	public int getClassUser() {
+	
+	public String getClassUser() {
 		return classUser;
 	}
 
-	public void setClassUser(int classUser) {
+	public void setClassUser(String classUser) {
 		this.classUser = classUser;
+	}
+
+	public int getNumberGp() {
+		return numberGp;
+	}
+
+	public void setNumberGp(int numberGp) {
+		this.numberGp = numberGp;
 	}
 }
