@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import Bean.Admin;
 
@@ -16,15 +17,29 @@ public class AdminDao {
 		Conector.close();
 	}
 
-	public void verify(String registryAdmin) {
+	public boolean verify(String registryAdmin){
 		String sql = "SELECT * FROM admin_tb WHERE registryAdmin = \"" + registryAdmin + "\";";
-
+		
 		try {
 			PreparedStatement ps = Conector.con.prepareStatement(sql);
-
-			ps.execute();
-			System.out.println("- Busca realizada!\n");
-			// return ps.execute();
+			ResultSet rs = ps.executeQuery();
+            String[] arr = null;
+            
+            while (rs.next()) {
+            	String aux = rs.getString("registryAdmin");
+            	arr = aux.split("\n");
+            	for (int i = 0; i < arr.length; i++){
+            		System.out.println(arr[i]);
+                }
+            }
+            
+			if (arr[0] != null) {
+				System.out.println("- Busca realizada! --> True\n");
+				return true;
+			} else {
+				System.out.println("- Busca realizada! --> False\n");
+				return false;
+			}
 		} catch (SQLException e) {
 			System.out.println("- ERRO AO BUSCAR NA TABELA ADMIN_TB!!\n\n");
 			throw new RuntimeException(e.getMessage());

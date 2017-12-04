@@ -2,15 +2,11 @@ package Control;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 import Bean.Admin;
 import Bean.User;
 import DAO.AdminDao;
-import DAO.Conector;
 import DAO.UserDao;
 
 public class Metods {
@@ -43,7 +39,7 @@ public class Metods {
 		String scn = scan.nextLine();
 		u.setNameUser(scn.toUpperCase());
 			
-		System.out.print("- Matrícula do(a) aluno(a): ");
+		System.out.print("- Matricula do(a) aluno(a): ");
 		scn = scan.nextLine();
 		u.setRegistryUser(scn);
 			
@@ -59,7 +55,7 @@ public class Metods {
 		scn = scan.nextLine();
 		u.setCourseUser(scn.toUpperCase());
 			
-		System.out.print("- \"Ano.período\" de entrada do(a) aluno(a): ");
+		System.out.print("- \"Ano.periodo\" de entrada do(a) aluno(a): ");
 		scn = scan.nextLine();
 		u.setClassUser(scn);
 			
@@ -87,7 +83,7 @@ public class Metods {
 		String scn = scan.nextLine();
 		adm.setNameAdmin(scn.toUpperCase());
 			
-		System.out.print("- Matrícula do(a) aluno(a): ");
+		System.out.print("- Matricula do(a) aluno(a): ");
 		scn = scan.nextLine();
 		adm.setRegistryAdmin(scn);
 			
@@ -102,7 +98,6 @@ public class Metods {
 		admd.save(adm); //Fazer verificação antes de inserir no BD
 		
 		admd.verify(adm.getRegistryAdmin());
-		//admd.delete(adm);
 		
 		scan.close();
 		admd.disconnect();
@@ -114,12 +109,49 @@ public class Metods {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("Matrícula do usuário que deseja excluir: ");
+		System.out.print("Matricula do(a) usuario(a) que deseja excluir: ");
 		String registryUser = scan.nextLine();
 		
 		if (ud.verify(registryUser)) {
-			System.out.println("O usuário da matrícula" + registryUser + " existe e será excluido!");
+			System.out.println("O(A) usuario(a) da matricula" + registryUser + " existe e sera excluido(a)!");
 			ud.delete(registryUser);
-		} // else
+		} else {
+			System.out.println("O(A) usuario(a) da matricula" + registryUser + " nao esta cadastrado(a)!\n");
+			
+			System.out.println("Deseja cadastra-lo(a)?");
+			String r = scan.nextLine().toUpperCase();
+			
+			if (r == "S" || r == "SIM") {
+				addUser();
+			}
+		}
+		
+		scan.close();
+	}
+
+	protected static void delAdmin() {
+		AdminDao admd = new AdminDao();
+		admd.connect();
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("Matricula do(a) administrador(a) que deseja excluir: ");
+		String registryAdmin = scan.nextLine();
+		
+		if (admd.verify(registryAdmin)) {
+			System.out.println("O(A) adminstrador(a) da matricula" + registryAdmin + " existe e sera excluido(a)!");
+			admd.delete(registryAdmin);
+		} else {
+			System.out.println("O(A) adminstrador(a) da matricula" + registryAdmin + " nao esta cadastrado(a)!\n");
+			
+			System.out.println("Deseja cadastra-lo(a)?");
+			String r = scan.nextLine().toUpperCase();
+			
+			if (r == "S" || r == "SIM") {
+				addAdmin();
+			}
+		}
+		
+		scan.close();
 	}
 }

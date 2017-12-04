@@ -2,49 +2,63 @@ package Control;
 
 import java.util.Scanner;
 
+import DAO.UserDao;
+
 public class Start extends Metods{
 	public static void main(String[] args) {
-		/*switch (args[1].toUpperCase()) {
+		//----------------------------------------------------------------------------------------------
+
+		// TRATAR DOS COMANDOS DO BASH
 		
-		//Modelo da entrada: command -parameter registryUser
+		//Modelo da entrada: ddls command -parameter registryUser
 		//                   Password: ********
 		
-		case "LOGIN":
-			Scanner scan = new Scanner(System.in);
-			String scn = new String();	
-			UserDao ad = new UserDao();
+			switch (args[1].toUpperCase()) {
+				case "LOGIN":
+					Scanner scan = new Scanner(System.in);
+					String scn = new String();	
 					
-			//lembrar do parametro args[2]
-			
-			if (args[3].length() > 12 || args[3].length() < 7) {
-					System.out.println("Erro: Matrícula inválida!");
-			} else {
-				ad.connect();
-				String retsrch = ad.search(args[3]);
-				if (retsrch == /*RESPOSTAPOSITIVADAFUNCAO/ null) {
-					System.out.print("Password: ");
-					//Esconder senha
-					scn = scan.nextLine();
-					if (scn != ad.search(bummand -pascaSenhaReferente)) {
-						//Autentica usuario e senha atraves da inteface Autentication
-						//Entra no ambiente do programa
-					} else {
-						System.out.println("Erro: Senha inválida!");
+					switch (args[2].toUpperCase()) {
+						case "-U":
+							UserDao ud = new UserDao();
+							
+							if (args[3].length() != 12 || args[3].length() != 11 || args[3].length() != 7) {
+								System.out.println("ERRO: MATRICULA INVALIDA!");
+							} else {
+								ud.connect();
+								if (ud.verify(args[3])) {
+									System.out.print("Password: ");
+									//Esconder senha
+									scn = scan.nextLine();
+									if (scn != ud.search()) {
+										//Autentica usuario e senha atraves da inteface Autentication
+										//Entra no ambiente do programa
+									} else {
+										System.out.println("Erro: Senha invalida!");
+									}
+								} else {
+									System.out.println("Erro: Matricula invalida!");
+								}
+							}
+							ud.disconnect();
+							break;
+							
+						case "-A":
+							
+							break;
 					}
-				} else {
-					System.out.println("Erro: Matrícula inválida!");
-				}
-			}
-			ad.disconnect();
-			break;
+					break;
 			
-		case "LOGGOUT":
-			break;
+				case "LOGGOUT":
+					break;
 
-		default:
-			break;
-		}*/
+				default:
+					break;
+			}
 		
+		//----------------------------------------------------------------------------------------------
+			
+			
 		//----------------------------------------------------------------------------------------------
 		
 		// SE O USUARIO LOGGAR COMO ADMIN
@@ -65,9 +79,9 @@ public class Start extends Metods{
 				default:
 					break;
 			}
-		
+			
+			scan.close();
+			
 		//----------------------------------------------------------------------------------------------
-		
-		scan.close();
 	}
 }
