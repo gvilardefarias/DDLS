@@ -22,9 +22,7 @@ public class Start extends Metods{
 						case "-U":
 							UserDao ud = new UserDao();
 							
-							if (args[3].length() != 12 || args[3].length() != 11 || args[3].length() != 7) {
-								System.out.println("ERRO: MATRICULA INVALIDA!");
-							} else {
+							if (args[3].length() == 12 || args[3].length() == 11 || args[3].length() == 7) {
 								ud.connect();
 								if (ud.verify(args[3])) {
 									System.out.print("Password: ");
@@ -37,8 +35,10 @@ public class Start extends Metods{
 										System.out.println("Erro: Senha invalida!");
 									}
 								} else {
-									System.out.println("Erro: Matricula invalida!");
+									System.out.println("Erro: Matricula inexistente!");
 								}
+							} else {
+								System.out.println("Erro: Matricula invalida!");
 							}
 							ud.disconnect();
 							break;

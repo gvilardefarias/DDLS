@@ -65,7 +65,7 @@ public class Metods {
 
 		ud.save(u); //Fazer verificação antes de inserir no BD
 			
-		ud.verify(u.getRegistryUser());
+		//ud.verify(u.getRegistryUser());
 		
 		scan.close();
 		ud.disconnect();
@@ -103,6 +103,21 @@ public class Metods {
 		admd.disconnect();
 	}
 
+	protected static void returnUser() {
+		UserDao ud = new UserDao();
+		ud.connect();
+			
+		Scanner scan = new Scanner(System.in);
+			
+		System.out.print("Matricula do(a) usuario(a) que deseja procurar: ");
+		String scn = scan.nextLine();
+			
+		ud.verify(scn);
+		
+		scan.close();
+		ud.disconnect();
+	}
+	
 	protected static void delUser() {
 		UserDao ud = new UserDao();
 		ud.connect();
@@ -113,10 +128,10 @@ public class Metods {
 		String registryUser = scan.nextLine();
 		
 		if (ud.verify(registryUser)) {
-			System.out.println("O(A) usuario(a) da matricula" + registryUser + " existe e sera excluido(a)!");
+			System.out.println("O(A) usuario(a) da matricula " + registryUser + " existe e sera excluido(a)!");
 			ud.delete(registryUser);
 		} else {
-			System.out.println("O(A) usuario(a) da matricula" + registryUser + " nao esta cadastrado(a)!\n");
+			System.out.println("O(A) usuario(a) da matricula " + registryUser + " nao esta cadastrado(a)!\n");
 			
 			System.out.println("Deseja cadastra-lo(a)?");
 			String r = scan.nextLine().toUpperCase();
@@ -139,10 +154,10 @@ public class Metods {
 		String registryAdmin = scan.nextLine();
 		
 		if (admd.verify(registryAdmin)) {
-			System.out.println("O(A) adminstrador(a) da matricula" + registryAdmin + " existe e sera excluido(a)!");
+			System.out.println("O(A) adminstrador(a) da matricula " + registryAdmin + " existe e sera excluido(a)!");
 			admd.delete(registryAdmin);
 		} else {
-			System.out.println("O(A) adminstrador(a) da matricula" + registryAdmin + " nao esta cadastrado(a)!\n");
+			System.out.println("O(A) adminstrador(a) da matricula " + registryAdmin + " nao esta cadastrado(a)!\n");
 			
 			System.out.println("Deseja cadastra-lo(a)?");
 			String r = scan.nextLine().toUpperCase();

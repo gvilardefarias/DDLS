@@ -25,19 +25,20 @@ public class AdminDao {
 			ResultSet rs = ps.executeQuery();
             String[] arr = null;
             
-            while (rs.next()) {
-            	String aux = rs.getString("registryAdmin");
-            	arr = aux.split("\n");
-            	for (int i = 0; i < arr.length; i++){
-            		System.out.println(arr[i]);
+            try {
+            	while (rs.next()) {
+                	arr = rs.getString("registryAdmin").split("\n");
                 }
+            } catch (java.lang.NullPointerException e) {
+            	System.out.println("\nERRO: " + e + "\n");
+            	arr = null;
             }
             
-			if (arr[0] != null) {
-				System.out.println("- Busca realizada! --> True\n");
+			if (arr != null) {
+				System.out.println("\n- Busca realizada! --> True\n");
 				return true;
 			} else {
-				System.out.println("- Busca realizada! --> False\n");
+				System.out.println("\n- Busca realizada! --> False\n");
 				return false;
 			}
 		} catch (SQLException e) {
