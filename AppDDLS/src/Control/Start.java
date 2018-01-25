@@ -2,6 +2,7 @@ package Control;
 
 import java.util.Scanner;
 
+import DAO.AdminDao;
 import DAO.UserDao;
 
 public class Start extends Metods{
@@ -28,14 +29,13 @@ public class Start extends Metods{
 									System.out.print("Password: ");
 									//Esconder senha
 									scn = scan.nextLine();
-									if (scn != ud.search()) {
-										//Autentica usuario e senha atraves da inteface Autentication
-										//Entra no ambiente do programa
+									if (scn != ud.search()/*search precisa retornar senha ou as infos do user*/) {
+										//Entra no ambiente do user
 									} else {
 										System.out.println("Erro: Senha invalida!");
 									}
 								} else {
-									System.out.println("Erro: Matricula inexistente!");
+									System.out.println("Erro: Matricula nao cadastrada!");
 								}
 							} else {
 								System.out.println("Erro: Matricula invalida!");
@@ -44,7 +44,26 @@ public class Start extends Metods{
 							break;
 							
 						case "-A":
+							AdminDao ad = new AdminDao();
 							
+							if (args[3].length() == 12 || args[3].length() == 11 || args[3].length() == 7) {
+								ad.connect();
+								if (ad.verify(args[3])) {
+									System.out.print("Password: ");
+									//Esconder senha
+									scn = scan.nextLine();
+									if (scn != ad.search()/*search precisa retornar senha ou as infos do admin*/) {
+										//Entra no ambiente do admin
+									} else {
+										System.out.println("Erro: Senha invalida!");
+									}
+								} else {
+									System.out.println("Erro: Matricula nao cadastrada!");
+								}
+							} else {
+								System.out.println("Erro: Matricula invalida!");
+							}
+							ad.disconnect();
 							break;
 					}
 					break;

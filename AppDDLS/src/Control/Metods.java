@@ -103,13 +103,13 @@ public class Metods {
 		admd.disconnect();
 	}
 
-	protected static void returnUser() {
+	protected static void boolUser() {
 		UserDao ud = new UserDao();
 		ud.connect();
 			
 		Scanner scan = new Scanner(System.in);
 			
-		System.out.print("Matricula do(a) usuario(a) que deseja procurar: ");
+		System.out.print("Matricula do(a) usuario(a) que deseja verificar a existência: ");
 		String scn = scan.nextLine();
 			
 		ud.verify(scn);
