@@ -5,32 +5,36 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Scanner;
 
-public class Cliente implements Runnable{
+public class Client implements Runnable{
 	private Socket socket;
 	
 	private BufferedReader in;
 	private PrintStream out;
 	
-	private boolean inicializado;
-	private boolean executando;
+	private boolean started;
+	private boolean running;
 	
 	private Thread thread;
 	
-	public Cliente(String endereco, int porta) throws Exception {
-		inicializado = false;
-		executando = false;
+	// ---------------------------------- Construtor -----------------------------------
+
+	public Client(String adrress, int porta) throws Exception {
+		started = false;
+		running = false;
 		
-		open(endereco, porta);
+		open(adrress, porta);
 	}
 	
-	private void open(String endereco, int porta) throws Exception {
+	// ------------------------------ Funcoes De Execucao ------------------------------
+
+	private void open(String adrress, int porta) throws Exception {
 		try {
-			socket = new Socket(endereco, porta);
+			socket = new Socket(adrress, porta);
 			
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new PrintStream(socket.getOutputStream());
 			
-			inicializado = true;
+			started = true;
 		} catch (Exception e) {
 			System.out.println(e);
 			close();
@@ -68,47 +72,43 @@ public class Cliente implements Runnable{
 		
 		socket = null;
 		
-		inicializado = false;
-		executando = false;
+		started = false;
+		running = false;
 		
 		thread = null;
 	}
 	
 	public void start() {
-		if (!inicializado || executando) {
+		if (!started || running) {
 			return;
 		}
 		
-		executando = true;
+		running = true;
 		thread = new Thread(this);
 		thread.start();
 	}
 	
 	public void stop() throws Exception {
-		executando = false;
+		running = false;
 		
 		if (thread != null) {
 			thread.join();
 		}
 	}
-	
-	public boolean isExecutando() {
-		return executando;
-	}
-	
-	public void send(String mensagem) {
-		out.println(mensagem);
-	}
-	
+
 	@Override
 	public void run() {
-		while (executando) {
+		while (running) {
 			try {
 				socket.setSoTimeout(2500);
 				
-				String mensagem = in.readLine();
+				String mensage = in.readLine();
 				
-				System.out.println("Mensagem enviada pelo servidor: " + mensagem);
+				if (mensage == null) {
+					break;
+				}
+				
+				System.out.println("Mensagem enviada pelo servidor: " + mensage);
 			} catch (SocketTimeoutException e) {
 				// ignorar
 			} catch (Exception e) {
@@ -120,36 +120,49 @@ public class Cliente implements Runnable{
 		close();
 	}
 	
+	// ------------------------------------ Metodos ------------------------------------
+
+	public boolean isExecutando() {
+		return running;
+	}
+	
+	public void send(String mensage) {
+		out.println(mensage);
+	}
+	
+	// -------------------------------- Funcao Principal -------------------------------
+
 	public static void main(String[] args) throws Exception{
 		System.out.println("Iniciando cliente...");
 		
-		System.out.println("Iniciando conexão com o servidor...");
+		System.out.println("Iniciando conexao com o servidor...");
 		
-		Cliente cliente = new Cliente("localhost", 2525);
+		Client client = new Client("localhost", 2525);
 		
-		System.out.println("Conexão estabelecida com sucesso...");
+		System.out.println("Conexao estabelecida com sucesso...");
 		
-		cliente.start();
+		client.start();
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		while (true){
-			System.out.print("Digite uma mensagem: ");
-			String mensagem = scanner.nextLine();
+			String mensage = scanner.nextLine();
 			
-			if (!cliente.isExecutando()) {
+			if (!client.isExecutando()) {
 				break;
 			}
 			
-			cliente.send(mensagem);
+			client.send(mensage);
 			
-			if ("FIM".equals(mensagem)){
+			if ("DDLS LOGGOUT".equals(mensage.toUpperCase())){
 				break;
 			}
 		}
 
 		System.out.println("Encerrando cliente...");
 		
-		cliente.stop();
+		client.stop();
+		
+		scanner.close();
 	}
 }

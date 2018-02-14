@@ -6,13 +6,20 @@ import DAO.AdminDao;
 import DAO.UserDao;
 
 public class Start extends Metods{
+	/*public Start() {
+		System.out.println("************************ DDLS ***********************");
+		System.out.println("-----------------------------------------------------");
+		System.out.println("Utilize a seguinte linha de comando para fazer login:");
+		System.out.println("ddls comando -parametro suaMatricula"                 );
+		System.out.println("-----------------------------------------------------");
+		System.out.println("Pos login, os comandos seguirao o seguinte padrao:"   );
+		System.out.println("ddls comando -parametro"                              );
+	}*/
+	
 	public static void main(String[] args) {
 		//----------------------------------------------------------------------------------------------
 
 		// TRATAR DOS COMANDOS DO BASH
-		
-		//Modelo da entrada: ddls command -parameter registryUser
-		//                   Password: ********
 		
 			switch (args[1].toUpperCase()) {
 				case "LOGIN":

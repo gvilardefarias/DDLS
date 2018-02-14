@@ -1,8 +1,13 @@
+package Control;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.Scanner;
+
+import DAO.AdminDao;
+import DAO.UserDao;
 
 public class Atendente implements Runnable{
 	private Socket socket;
@@ -102,6 +107,65 @@ public class Atendente implements Runnable{
 				}
 				
 				System.out.println("Mensagem recebida do cliente [" + socket.getInetAddress().getHostName() + ":" + socket.getPort() + "]: " + mensage);
+				
+	// -----------------------------------------------------------------------------
+				
+				/*switch (mensage.split(" ")[1].toUpperCase()) {
+				case "LOGIN":
+					Scanner scan = new Scanner(System.in);
+					String scn = new String();	
+					
+					switch (mensage.split(" ")[2].toUpperCase()) {
+						case "-U":
+							UserDao ud = new UserDao();
+							ud.connect();
+							
+							if (ud.verify(mensage.split(" ")[3])) {
+								System.out.print("Password: ");
+								//Esconder senha
+								scn = scan.nextLine();
+								if (true /*scn != ud.search() --> search precisa retornar senha ou as infos do user) {
+									//Entra no ambiente do user
+								} else {
+									System.out.println("Erro: Senha invalida!");
+								}
+							} else {
+								System.out.println("Erro: Matricula nao cadastrada!");
+							}
+							
+							ud.disconnect();
+							break;
+							
+						case "-A":
+							AdminDao ad = new AdminDao();
+							ad.connect();
+							
+							if (ad.verify(mensage.split(" ")[3])) {
+								System.out.print("Password: ");
+								//Esconder senha
+								scn = scan.nextLine();
+								if (true /*scn != ad.search() --> search precisa retornar senha ou as infos do admin) {
+									//Entra no ambiente do admin
+								} else {
+									System.out.println("Erro: Senha invalida!");
+								}
+							} else {
+								System.out.println("Erro: Matricula nao cadastrada!");
+							}
+								
+							ad.disconnect();
+							break;
+					}
+					break;
+			
+				case "LOGGOUT":
+					break;
+
+				default:
+					break;
+			}*/
+				
+	// -----------------------------------------------------------------------------
 				
 				if ("DDLS EXIT".equals(mensage.toUpperCase())) {
 					break;
