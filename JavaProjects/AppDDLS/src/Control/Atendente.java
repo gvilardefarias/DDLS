@@ -167,7 +167,7 @@ public class Atendente implements Runnable{
 				
 	// -----------------------------------------------------------------------------
 				
-				if ("DDLS EXIT".equals(mensage.toUpperCase())) {
+				if ("DDLS LOGGOUT".equals(mensage.toUpperCase())) {
 					break;
 				}
 			
