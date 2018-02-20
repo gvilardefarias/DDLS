@@ -3,7 +3,12 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
+
+import DAO.AdminDao;
+import DAO.UserDao;
 
 public class Client implements Runnable{
 	private Socket socket;
@@ -119,8 +124,6 @@ public class Client implements Runnable{
 		
 		close();
 	}
-	
-	// ------------------------------------ Metodos ------------------------------------
 
 	public boolean isExecutando() {
 		return running;
@@ -128,6 +131,23 @@ public class Client implements Runnable{
 	
 	public void send(String mensage) {
 		out.println(mensage);
+	}
+	
+	private static String encrypt(String input) {
+		final StringBuffer sb = new StringBuffer();
+		
+		try {
+			MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+			byte[] result = mDigest.digest(input.getBytes());
+
+			for (int i = 0; i < result.length; i++) {
+				sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
+			}
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		return sb.toString();
 	}
 	
 	// -------------------------------- Funcao Principal -------------------------------
@@ -152,11 +172,66 @@ public class Client implements Runnable{
 				break;
 			}
 			
-			client.send(mensage);
+			//-------------------------------------------------------------------------------
 			
-			if ("DDLS LOGGOUT".equals(mensage.toUpperCase())){
-				break;
+			switch (encrypt(mensage.split(" ")[0].toUpperCase())) {
+				case "d4fc4761f015d39c1d3bd6424c485e8c1b23849c": //case "LOGIN":
+					if (mensage.length() == 3) {
+						String[] usr = new String[4];
+						
+						switch (mensage.split(" ")[1].toUpperCase()) {
+							case "-U":
+								usr[0] = mensage.split(" ")[0].toUpperCase();
+								usr[1] = mensage.split(" ")[1].toUpperCase();
+								usr[2] = mensage.split(" ")[2].toUpperCase();
+								
+								System.out.print("Password: "); //Esconder senha
+								
+								usr[3] = new Scanner(System.in).nextLine().toUpperCase();
+								
+								mensage = usr[0] + " " + usr[1] + " " + usr[2] + " " + usr[3];
+								
+								client.send(mensage);
+								break;
+								
+							case "-A":
+								
+								System.out.print("Password: "); //Esconder senha
+								
+								
+								if (true /*scn != ad.search() --> search precisa retornar senha ou as infos do admin*/) {
+									//Entra no ambiente do admin
+								} else {
+									System.out.println("Erro: Senha invalida!");
+								}
+								break;
+						}
+						break;
+					} else {
+						System.out.println("Erro: Comando(\"login -parameter matricula\") incorreto!");
+					}
+				
+				case "cc7fa036fec03ddbcc492c82e1c55dd15127e960": //case "LOGGED":
+					if (true /*SUCCES*/) {
+						UserDao ud = new UserDao();
+						ud.connect();
+						
+					} else {
+						System.out.println("Erro: Matricula ou senha incorretos!");
+					}
+					
+					break;
+					
+				case "82915c102aa0e9bf54b8c04c4b4737c8f3fe4a36": //case "LOGGOUT":
+					break;
+	
+				default:
+					break;
 			}
+			
+			/*if ("DDLS LOGGOUT".equals(mensage.toUpperCase())){
+				break;
+			}*/
 		}
 
 		System.out.println("Encerrando cliente...");

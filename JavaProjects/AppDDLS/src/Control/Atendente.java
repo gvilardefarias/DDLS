@@ -110,7 +110,7 @@ public class Atendente implements Runnable{
 				
 	// -----------------------------------------------------------------------------
 				
-				/*switch (mensage.split(" ")[1].toUpperCase()) {
+				switch (mensage.split(" ")[1].toUpperCase()) {
 				case "LOGIN":
 					Scanner scan = new Scanner(System.in);
 					String scn = new String();	
@@ -124,7 +124,7 @@ public class Atendente implements Runnable{
 								System.out.print("Password: ");
 								//Esconder senha
 								scn = scan.nextLine();
-								if (true /*scn != ud.search() --> search precisa retornar senha ou as infos do user) {
+								if (true /*scn != ud.search() --> search precisa retornar senha ou as infos do user*/) {
 									//Entra no ambiente do user
 								} else {
 									System.out.println("Erro: Senha invalida!");
@@ -144,7 +144,7 @@ public class Atendente implements Runnable{
 								System.out.print("Password: ");
 								//Esconder senha
 								scn = scan.nextLine();
-								if (true /*scn != ad.search() --> search precisa retornar senha ou as infos do admin) {
+								if (true /*scn != ad.search() --> search precisa retornar senha ou as infos do admin*/) {
 									//Entra no ambiente do admin
 								} else {
 									System.out.println("Erro: Senha invalida!");
@@ -163,7 +163,7 @@ public class Atendente implements Runnable{
 
 				default:
 					break;
-			}*/
+			}
 				
 	// -----------------------------------------------------------------------------
 				
