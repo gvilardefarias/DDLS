@@ -16,6 +16,7 @@ public class Start extends Metods{
 		System.out.println("ddls comando -parametro"                              );
 	}*/
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		//----------------------------------------------------------------------------------------------
 
@@ -36,7 +37,7 @@ public class Start extends Metods{
 									System.out.print("Password: ");
 									//Esconder senha
 									scn = scan.nextLine();
-									if (scn != ud.search()/*search precisa retornar senha ou as infos do user*/) {
+									if (true /*scn != ud.search() search precisa retornar senha ou as infos do user*/) {
 										//Entra no ambiente do user
 									} else {
 										System.out.println("Erro: Senha invalida!");
@@ -59,7 +60,7 @@ public class Start extends Metods{
 									System.out.print("Password: ");
 									//Esconder senha
 									scn = scan.nextLine();
-									if (scn != ad.search()/*search precisa retornar senha ou as infos do admin*/) {
+									if (true /*scn != ad.search() search precisa retornar senha ou as infos do admin*/) {
 										//Entra no ambiente do admin
 									} else {
 										System.out.println("Erro: Senha invalida!");

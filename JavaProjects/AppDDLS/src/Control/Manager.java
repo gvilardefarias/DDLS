@@ -9,7 +9,7 @@ import java.util.Scanner;
 import DAO.AdminDao;
 import DAO.UserDao;
 
-public class Atendente implements Runnable{
+public class Manager implements Runnable{
 	private Socket socket;
 	
 	private BufferedReader in;
@@ -22,7 +22,7 @@ public class Atendente implements Runnable{
 	
 	// ---------------------------------- Construtor -----------------------------------
 
-	public Atendente(Socket socket) throws Exception{
+	public Manager(Socket socket) throws Exception{
 		this.socket = socket;
 		
 		this.started = false;
@@ -94,6 +94,7 @@ public class Atendente implements Runnable{
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	@Override
 	public void run() {
 		while (running) {

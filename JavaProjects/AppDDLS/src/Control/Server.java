@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Servidor implements Runnable{
+public class Server implements Runnable{
 	private ServerSocket server;
 	
-	private List<Atendente> atendentes;
+	private List<Manager> atendentes;
 	
 	private boolean inicializado;
 	private boolean executando;
@@ -18,9 +18,9 @@ public class Servidor implements Runnable{
 	
 	// ---------------------------------- Construtor -----------------------------------
 	
-	public Servidor(int porta) throws Exception {
+	public Server(int porta) throws Exception {
 		
-		atendentes = new ArrayList<Atendente>();
+		atendentes = new ArrayList<Manager>();
 		inicializado = false;
 		executando = false;
 		
@@ -35,7 +35,7 @@ public class Servidor implements Runnable{
 	}
 	
 	private void close() {
-		for (Atendente atendente : atendentes) {
+		for (Manager atendente : atendentes) {
 			try {
 				atendente.stop();
 			} catch (Exception e) {
@@ -85,7 +85,7 @@ public class Servidor implements Runnable{
 				
 				System.out.println("Conexao estabelecida.");
 				
-				Atendente atendente = new Atendente(socket);
+				Manager atendente = new Manager(socket);
 				atendente.start();
 				
 				atendentes.add(atendente); 
@@ -110,7 +110,7 @@ public class Servidor implements Runnable{
 	public static void main(String[] args) throws Exception{
 		System.out.println("Iniciando servidor...");
 		
-		Servidor servidor = new Servidor(2525);
+		Server servidor = new Server(2525);
 		servidor.start();
 		
 		System.out.println("Pressione ENTER para encerrar o servidor...");

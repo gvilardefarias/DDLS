@@ -1,8 +1,6 @@
 package Bean;
 
-import Control.Autentication;
-
-public class Admin implements Autentication{
+public class Admin {
 	private String nameAdmin;
 	private String registryAdmin;
 	private String passAdmin;

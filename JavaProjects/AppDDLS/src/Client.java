@@ -7,10 +7,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
-import DAO.AdminDao;
+import Control.Metods;
 import DAO.UserDao;
 
-public class Client implements Runnable{
+public class Client extends Metods implements Runnable {
 	private Socket socket;
 	
 	private BufferedReader in;
@@ -133,26 +133,9 @@ public class Client implements Runnable{
 		out.println(mensage);
 	}
 	
-	private static String encrypt(String input) {
-		final StringBuffer sb = new StringBuffer();
-		
-		try {
-			MessageDigest mDigest = MessageDigest.getInstance("SHA1");
-			byte[] result = mDigest.digest(input.getBytes());
-
-			for (int i = 0; i < result.length; i++) {
-				sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
-			}
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		
-		return sb.toString();
-	}
-	
 	// -------------------------------- Funcao Principal -------------------------------
 
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception {
 		System.out.println("Iniciando cliente...");
 		
 		System.out.println("Iniciando conexao com o servidor...");

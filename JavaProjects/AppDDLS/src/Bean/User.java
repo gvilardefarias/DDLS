@@ -1,8 +1,6 @@
 package Bean;
 
-import Control.Autentication;
-
-public class User implements Autentication{
+public class User {
 	private String nameUser;
 	private String registryUser;
 	private String passUser;
