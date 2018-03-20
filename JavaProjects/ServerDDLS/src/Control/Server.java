@@ -106,7 +106,6 @@ public class Server implements Runnable{
 	
 	// -------------------------------- Funcao Principal -------------------------------
 	
-	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception{
 		System.out.println("Iniciando servidor...");
 		

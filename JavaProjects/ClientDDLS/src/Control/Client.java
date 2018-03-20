@@ -1,13 +1,11 @@
+package Control;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
-import Control.Metods;
 import DAO.UserDao;
 
 public class Client extends Metods implements Runnable {
@@ -135,6 +133,7 @@ public class Client extends Metods implements Runnable {
 	
 	// -------------------------------- Funcao Principal -------------------------------
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception {
 		System.out.println("Iniciando cliente...");
 		
@@ -216,7 +215,38 @@ public class Client extends Metods implements Runnable {
 				break;
 			}*/
 		}
-
+		
+		
+		
+		
+		//----------------------------------------------------------------------------------------------
+		
+		// SE O USUARIO LOGGAR COMO ADMIN
+		/*	
+			Scanner scan = new Scanner(System.in);
+			String scn = scan.nextLine().toUpperCase();
+					
+			switch (scn) {
+				case "ADDUSER":
+					addUser();
+					break;
+				case "ADDADMIN":
+					addAdmin();
+					break;
+				case "DELUSER":
+					delUser();
+					break;
+				default:
+					break;
+			}
+					
+			scan.close();
+		*/	
+		//----------------------------------------------------------------------------------------------
+		
+		
+		
+		
 		System.out.println("Encerrando cliente...");
 		
 		client.stop();
