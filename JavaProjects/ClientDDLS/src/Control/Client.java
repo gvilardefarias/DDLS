@@ -158,27 +158,38 @@ public class Client extends Metods implements Runnable {
 			
 			switch (encrypt(mensage.split(" ")[0].toUpperCase())) {
 				case "d4fc4761f015d39c1d3bd6424c485e8c1b23849c": //case "LOGIN":
-					if (mensage.length() == 3) {
-						String[] usr = new String[4];
+					if (mensage.split(" ").length == 3) {
+						String[] aux = new String[4];
+						String e = new String();
 						
 						switch (mensage.split(" ")[1].toUpperCase()) {
 							case "-U":
-								usr[0] = mensage.split(" ")[0].toUpperCase();
-								usr[1] = mensage.split(" ")[1].toUpperCase();
-								usr[2] = mensage.split(" ")[2].toUpperCase();
+								aux[0] = mensage.split(" ")[0].toUpperCase();
+								aux[1] = mensage.split(" ")[1].toUpperCase();
+								aux[2] = mensage.split(" ")[2].toUpperCase();
 								
 								System.out.print("Password: "); //Esconder senha
 								
-								usr[3] = new Scanner(System.in).nextLine().toUpperCase();
+								aux[3] = new Scanner(System.in).nextLine().toUpperCase();
 								
-								mensage = usr[0] + " " + usr[1] + " " + usr[2] + " " + usr[3];
+								mensage = aux[0] + " " + aux[1] + " " + aux[2] + " " + aux[3];
 								
 								client.send(mensage);
 								break;
 								
 							case "-A":
 								
+								aux[0] = mensage.split(" ")[0].toUpperCase();
+								aux[1] = mensage.split(" ")[1].toUpperCase();
+								aux[2] = mensage.split(" ")[2].toUpperCase();
+								
 								System.out.print("Password: "); //Esconder senha
+								
+								aux[3] = new Scanner(System.in).nextLine().toUpperCase();
+								
+								mensage = aux[0] + " " + aux[1] + " " + aux[2] + " " + aux[3];
+								
+								client.send(mensage);
 								
 								
 								if (true /*scn != ad.search() --> search precisa retornar senha ou as infos do admin*/) {
@@ -187,11 +198,17 @@ public class Client extends Metods implements Runnable {
 									System.out.println("Erro: Senha invalida!");
 								}
 								break;
+							
+							default:
+								System.out.println("Erro: Parametro inexistente!");
+								break;
 						}
+						
 						break;
 					} else {
 						System.out.println("Erro: Comando(\"login -parameter matricula\") incorreto!");
 					}
+					break;
 				
 				case "cc7fa036fec03ddbcc492c82e1c55dd15127e960": //case "LOGGED":
 					if (true /*SUCCES*/) {
@@ -203,17 +220,14 @@ public class Client extends Metods implements Runnable {
 					}
 					
 					break;
-					
-				case "82915c102aa0e9bf54b8c04c4b4737c8f3fe4a36": //case "LOGGOUT":
-					break;
 	
 				default:
 					break;
 			}
 			
-			/*if ("DDLS LOGGOUT".equals(mensage.toUpperCase())){
+			if ("82915c102aa0e9bf54b8c04c4b4737c8f3fe4a36".equals(encrypt(mensage.split(" ")[0].toUpperCase()))) {
 				break;
-			}*/
+			}
 		}
 		
 		
@@ -247,7 +261,7 @@ public class Client extends Metods implements Runnable {
 		
 		
 		
-		System.out.println("Encerrando cliente...");
+		System.out.println("Cliente encerrado com sucesso!");
 		
 		client.stop();
 		

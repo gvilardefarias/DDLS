@@ -112,63 +112,61 @@ public class Manager implements Runnable{
 	// -----------------------------------------------------------------------------
 				
 				switch (mensage.split(" ")[1].toUpperCase()) {
-				case "LOGIN":
-					Scanner scan = new Scanner(System.in);
-					String scn = new String();	
+					case "LOGIN":
+						Scanner scan = new Scanner(System.in);
+						String scn = new String();	
 					
-					switch (mensage.split(" ")[2].toUpperCase()) {
-						case "-U":
-							UserDao ud = new UserDao();
-							ud.connect();
+						switch (mensage.split(" ")[2].toUpperCase()) {
+							case "-U":
+								UserDao ud = new UserDao();
+								ud.connect();
 							
-							if (ud.verify(mensage.split(" ")[3])) {
-								System.out.print("Password: ");
-								//Esconder senha
-								scn = scan.nextLine();
-								if (true /*scn != ud.search() --> search precisa retornar senha ou as infos do user*/) {
-									//Entra no ambiente do user
+								if (ud.verify(mensage.split(" ")[3])) {
+									System.out.print("Password: ");
+									//Esconder senha
+									scn = scan.nextLine();
+									if (true /*scn != ud.search() --> search precisa retornar senha ou as infos do user*/) {
+										//Entra no ambiente do user
+									} else {
+										System.out.println("Erro: Senha invalida!");
+									}
 								} else {
-									System.out.println("Erro: Senha invalida!");
+									System.out.println("Erro: Matricula nao cadastrada!");
 								}
-							} else {
-								System.out.println("Erro: Matricula nao cadastrada!");
-							}
 							
-							ud.disconnect();
-							break;
+								ud.disconnect();
+								break;
 							
-						case "-A":
-							AdminDao ad = new AdminDao();
-							ad.connect();
+							case "-A":
+								AdminDao ad = new AdminDao();
+								ad.connect();
 							
-							if (ad.verify(mensage.split(" ")[3])) {
-								System.out.print("Password: ");
-								//Esconder senha
-								scn = scan.nextLine();
-								if (true /*scn != ad.search() --> search precisa retornar senha ou as infos do admin*/) {
-									//Entra no ambiente do admin
+								if (ad.verify(mensage.split(" ")[3])) {
+									System.out.print("Password: ");
+									//Esconder senha
+									scn = scan.nextLine();
+									if (true /*scn != ad.search() --> search precisa retornar senha ou as infos do admin*/) {
+										//Entra no ambiente do admin
+									} else {
+										System.out.println("Erro: Senha invalida!");
+									}
 								} else {
-									System.out.println("Erro: Senha invalida!");
+									System.out.println("Erro: Matricula nao cadastrada!");
 								}
-							} else {
-								System.out.println("Erro: Matricula nao cadastrada!");
-							}
 								
-							ad.disconnect();
-							break;
-					}
-					break;
-			
-				case "LOGGOUT":
-					break;
+								ad.disconnect();
+								break;
+						}
+						
+						break;
 
-				default:
-					break;
-			}
+					default:
+						break;
+				}
 				
 	// -----------------------------------------------------------------------------
 				
-				if ("DDLS LOGGOUT".equals(mensage.toUpperCase())) {
+				if ("LOGGOUT".equals(mensage.toUpperCase())) {
 					break;
 				}
 			
@@ -181,7 +179,7 @@ public class Manager implements Runnable{
 			}
 		}
 		
-		System.out.println("Encerrando conexao...");
+		System.out.println("Encerrando conexao do cliente [" + socket.getInetAddress().getHostName() + ":" + socket.getPort() + "]...");
 		
 		close();
 	}
