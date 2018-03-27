@@ -1,4 +1,5 @@
 package Control;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -31,7 +32,7 @@ public class Manager implements Runnable{
 		open();
 	}
 	
-	// ------------------------------ Funcoes De Execucao ------------------------------
+	// --------------------- Funcoes De Execucao E Maquinas De Estado ------------------
 
 	private void open() throws Exception{
 		try {

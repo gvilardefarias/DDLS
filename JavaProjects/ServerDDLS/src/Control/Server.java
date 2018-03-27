@@ -1,4 +1,5 @@
 package Control;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
@@ -27,7 +28,7 @@ public class Server implements Runnable{
 		open(porta);
 	}
 	
-	// ------------------------------ Funcoes De Execucao ------------------------------
+	// --------------------- Funcoes De Execucao E Maquinas De Estado ------------------
 	
 	private void open(int porta) throws Exception{
 		server = new ServerSocket(porta);
@@ -99,13 +100,10 @@ public class Server implements Runnable{
 		
 		close();
 	}
-	
-	// ------------------------------------ Metodos ------------------------------------
 
-	
-	
 	// -------------------------------- Funcao Principal -------------------------------
 	
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception{
 		System.out.println("Iniciando servidor...");
 		
